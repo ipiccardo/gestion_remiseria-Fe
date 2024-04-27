@@ -9,7 +9,7 @@ const NavLinks = () => {
 
     const links = [{
         name: 'Drivers',
-        href: '/',
+        href: '/drivers',
     }, {
         name: 'Vehicles',
         href: '/vehicles',

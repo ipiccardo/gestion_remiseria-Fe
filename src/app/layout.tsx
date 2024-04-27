@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "./components/SideBar";
+import { BreadcrumbWithCustomSeparator } from "./components/BreadCrums";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({
         <div className='flex gap-8'>
           <SideBar />
           <main className="flex min-h-screen flex-col items-center justify-between py-24 w-full">
+            <div className="absolute top-0 left-52 py-4">
+              <BreadcrumbWithCustomSeparator />
+            </div>
             {children}
           </main>
         </div>
