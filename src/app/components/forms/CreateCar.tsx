@@ -3,26 +3,28 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
-import { driver } from '../../../../types';
-import EmployeeInput from './EmployeeInput';
+import { driver, Vehiculo } from '../../../../../types';
+import EmployeeInput from './CustomInput';
 
-const NewEmployeeForm = () => {
+const NewCarForm = () => {
     const router = useRouter();
-    const [formData, setFormData] = useState<driver>({
-        nombre: '',
-        apellido: '',
-        dni: '',
-        idLicencia: 0,
-        vehiculosAsignados: '',
+    const [formData, setFormData] = useState<Vehiculo>({
+        dominio: '',
+        marca: '',
+        modelo: '',
+        kilometraje: 0,
+        disponible: true,
+        idVehiculo: 0,
         idEmpleado: 0
     });
-    const [validFields, setValidFields] = useState<Record<keyof driver, boolean>>({
-        nombre: false,
-        apellido: false,
-        dni: false,
-        idLicencia: false,
-        vehiculosAsignados: false,
+    const [validFields, setValidFields] = useState<Record<keyof Vehiculo, boolean>>({
+        dominio: false,
+        marca: false,
+        modelo: false,
+        kilometraje: false,
+        disponible: false,
         idEmpleado: false,
+        idVehiculo: false,
     });
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
@@ -30,7 +32,7 @@ const NewEmployeeForm = () => {
 
 
     useEffect(() => {
-        fetch('/api/patients').then((resp) => resp.json()).then((newData) => {
+        fetch('/api/cars').then((resp) => resp.json()).then((newData) => {
             if (dataUpdated) {
                 router.push('/')
                 setDataUpdated(false)
@@ -40,19 +42,19 @@ const NewEmployeeForm = () => {
     }, [dataUpdated])
 
 
-    const handleInputChange = (fieldName: keyof driver, value: string) => {
+    const handleInputChange = (fieldName: keyof Vehiculo, value: string) => {
         setFormData(prevData => ({
             ...prevData,
             [fieldName]: value,
         }));
-        // Validar el campo
+
         validateField(fieldName, value);
     };
 
-    const validateField = (fieldName: keyof driver, value: string) => {
-        // Validar si el valor está presente
+    const validateField = (fieldName: keyof Vehiculo, value: string) => {
+
         const isValid = value.trim() !== '';
-        // Actualizar el estado de validez del campo
+
         setValidFields(prevFields => ({
             ...prevFields,
             [fieldName]: isValid,
@@ -64,12 +66,12 @@ const NewEmployeeForm = () => {
     const handleSave = (e: any) => {
         e.preventDefault()
         if (allFieldsValid) {
-            const paciente = {
-                nombre: formData.nombre,
-                apellido: formData.apellido,
-                dni: parseInt(formData.dni),
-                idLicencia: formData.idLicencia,
-                vehiculosAsignados: formData.vehiculosAsignados,
+            const car = {
+                dominio: formData.dominio,
+                marca: formData.marca,
+                modelo: formData.modelo,
+                kilometraje: formData.kilometraje,
+                disponible: formData.disponible,
                 idEmpleado: new Date().getTime()
             };
 
@@ -90,14 +92,13 @@ const NewEmployeeForm = () => {
     };
 
 
-
     return (
         <>
 
-            <form className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl'>
-                <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
-                <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
-                <EmployeeInput type='text' name='dni' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
+            <form className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>
+                <EmployeeInput type='text' name='Dominio' value={formData.dominio} onChange={(value: string) => handleInputChange('dominio', value)} />
+                <EmployeeInput type='text' name='Marca' value={formData.marca} onChange={(value: string) => handleInputChange('marca', value)} />
+                <EmployeeInput type='text' name='Modelo' value={formData.modelo} onChange={(value: string) => handleInputChange('modelo', value)} />
                 {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
@@ -110,4 +111,4 @@ const NewEmployeeForm = () => {
     );
 };
 
-export default NewEmployeeForm;
+export default NewCarForm;

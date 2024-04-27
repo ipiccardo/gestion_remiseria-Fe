@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface PatientFormInputProps {
+interface CustomFormInputProps {
     type: string;
     name: string;
     value: any;
@@ -8,7 +8,7 @@ interface PatientFormInputProps {
     checked?: boolean;
 }
 
-const EmployeeInput: React.FC<PatientFormInputProps> = ({
+const CustomInput: React.FC<CustomFormInputProps> = ({
     type,
     name,
     value,
@@ -37,4 +37,4 @@ const EmployeeInput: React.FC<PatientFormInputProps> = ({
     );
 };
 
-export default EmployeeInput;
+export default CustomInput;

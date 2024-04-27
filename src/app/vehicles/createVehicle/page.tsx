@@ -1,8 +1,9 @@
+import NewCarForm from '@/app/components/forms/CreateCar'
 import React from 'react'
 
 const page = () => {
     return (
-        <div>page</div>
+        <NewCarForm />
     )
 }
 
