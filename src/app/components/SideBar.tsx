@@ -12,9 +12,9 @@ const SideBar = () => {
     return (
         <div className="text-white w-full h-auto min-h-screen min-w-48 flex flex-col justify-between  bg-gradient-to-b from-blue-800 to-blue-700 ">
             <div className="py-4">
-                <div className="px-4 mb-4 flex justify-center">
+                <Link className="px-4 mb-4 flex justify-center cursor-pointer" href={'/'} >
                     <Image width={200} height={200} src={'/images/logo.png'} alt={'logo'} />
-                </div>
+                </Link>
                 <ul className="space-y-2">
                     <NavLinks />
                 </ul>
