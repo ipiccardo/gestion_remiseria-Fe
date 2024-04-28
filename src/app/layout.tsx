@@ -24,11 +24,11 @@ export default function RootLayout({
           <div className="hidden md:block">
             <SideBar />
           </div>
-          <div className="block md:hidden absolute">
+          <div className="block md:hidden absolute bg-blue-900 w-full">
             <ResponsiveSideBar />
           </div>
           <main className="px-8 flex min-h-screen flex-col items-center justify-between py-24 md:pr-8 md:pl-0 w-full">
-            <div className="absolute top-0 left-52 py-4">
+            <div className="absolute top-0 left-10 md:left-52 py-4">
               <BreadcrumbWithCustomSeparator />
             </div>
             {children}

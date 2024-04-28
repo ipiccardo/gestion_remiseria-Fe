@@ -24,7 +24,7 @@ export function ResponsiveSideBar() {
         <div className="grid grid-cols-2 gap-2">
             {SHEET_SIDES.map((side) => (
                 <Sheet key={side}>
-                    <SheetTrigger asChild>
+                    <SheetTrigger className="w-14 h-14 bg-blue-900 border-none active:bg-blue-900" asChild>
                         <Button variant="outline">{<img src="/icons/hamburgerMenu.svg"></img>}</Button>
                     </SheetTrigger>
                     <SheetContent side={side}>

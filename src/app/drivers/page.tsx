@@ -12,7 +12,8 @@ const page = () => {
             <div className="w-80 mb-8">
                 <InputDemo />
             </div>
-            <div className="max-w-5xl">
+            {/* <div className="max-w-5xl"> */}
+            <div>
                 <DriversTable />
             </div>
         </div>

@@ -7,13 +7,14 @@ export default function Home() {
   return (
 
     <div className="w-full">
-      <div className="w-80 mb-8">
+      <div className="w-52 md:w-80 mb-8">
         <Button> + New Driver </Button>
       </div>
-      <div className="w-80 mb-8">
+      <div className="w-52 md:w-80 mb-8">
         <InputDemo />
       </div>
-      <div className="max-w-5xl">
+      {/* <div className="max-w-5xl"> */}
+      <div>
         <DriversTable />
       </div>
     </div>

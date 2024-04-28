@@ -12,7 +12,8 @@ const page = () => {
             <div className="w-80 mb-8">
                 <InputDemo />
             </div>
-            <div className="max-w-5xl w-full">
+            {/* <div className="max-w-5xl w-full"> */}
+            <div>
                 <TripsTable />
             </div>
         </div>
