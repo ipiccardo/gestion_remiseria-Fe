@@ -5,9 +5,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 import { driver, Vehiculo } from '../../../../../../types';
 import EmployeeInput from '../CustomInput';
+import { usePathname } from 'next/navigation'
 
 const NewCarForm = () => {
     const router = useRouter();
+    const pathName = usePathname()
+    const sendBack = pathName.split('/')[1]
     const [formData, setFormData] = useState<Vehiculo>({
         dominio: '',
         marca: '',
@@ -103,7 +106,7 @@ const NewCarForm = () => {
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
-                    <Link href='/' className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
+                    <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
                     <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-violet-800' : 'cursor-not-allowed'}`}>Guardar</button>
                 </div>
             </form>

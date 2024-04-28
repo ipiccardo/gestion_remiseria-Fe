@@ -2,6 +2,7 @@ import Image from "next/image";
 import { DriversTable } from "./components/tablas/DriversTable";
 import { InputDemo } from "./components/SearchBar";
 import Button from "./components/Button";
+import { PaginationDemo } from "./components/Pagination";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       {/* <div className="max-w-5xl"> */}
       <div>
         <DriversTable />
+        <PaginationDemo />
       </div>
     </div>
 

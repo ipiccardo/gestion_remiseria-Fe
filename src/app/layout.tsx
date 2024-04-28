@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
         <div className='flex gap-8'>
-          <div className="hidden md:block">
+          <div className="hidden md:block bg-blue-700">
             <SideBar />
           </div>
           <div className="block md:hidden absolute bg-blue-900 w-full">

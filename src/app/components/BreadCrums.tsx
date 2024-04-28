@@ -14,20 +14,20 @@ import {
 
 export function BreadcrumbWithCustomSeparator() {
     const pathName = usePathname()
-    const searchParams = useSearchParams();
-    const router = useRouter();
+
+    const sendBack = pathName.split('/')[1]
+
+
 
     return (
         <Breadcrumb className="px-8 ">
             <BreadcrumbList>
                 <BreadcrumbItem>
-
                     <Link href="/" className="text-white md:text-blue-900">Home</Link>
-
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbPage className='text-white md:text-blue-900'>{pathName.includes('vehicles') ? 'Vehicles' : pathName.includes('trips') ? 'Trips' : 'Drivers'}</BreadcrumbPage>
+                    <Link href={`/${sendBack}`} className='text-white md:text-blue-900'>{pathName.includes('vehicles') ? 'Vehicles' : pathName.includes('trips') ? 'Trips' : 'Drivers'}</Link>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>

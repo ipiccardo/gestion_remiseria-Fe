@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import Button from "../components/Button"
 
-export function Alert() {
+export function Alert({ id }: any) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>

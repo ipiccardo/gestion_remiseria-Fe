@@ -53,7 +53,7 @@ export function DriversTable() {
                                 </svg>
                             </Link>
                             <div className={`flex justify-center`}>
-                                <Alert />
+                                <Alert id={empleado.idEmpleado} />
                             </div>
 
                         </div></TableCell>
