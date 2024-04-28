@@ -11,7 +11,7 @@ import {
 
 export function BreadcrumbWithCustomSeparator() {
     return (
-        <Breadcrumb>
+        <Breadcrumb className="pl-8">
             <BreadcrumbList>
                 <BreadcrumbItem>
 
