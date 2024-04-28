@@ -21,7 +21,7 @@ export function Alert() {
                     <rect x="13" y="9" width="3" height="9" />
                 </svg>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className='w-48 md:w-full'>
                 <AlertDialogHeader>
                     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                     <AlertDialogDescription>
@@ -29,7 +29,7 @@ export function Alert() {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <Button secondary={true}>Cancel</Button>
                     <Button>Continue</Button>
                 </AlertDialogFooter>
             </AlertDialogContent>

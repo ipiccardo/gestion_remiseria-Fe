@@ -98,8 +98,8 @@ const NewTripForm = () => {
                 {/* <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
-                    <Link href='/' className='border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
-                    <button type='submit' onClick={(e) => handleSave(e)} className={`bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-blue-900' : 'cursor-not-allowed'}`}>Guardar</button>
+                    <Link href='/' className='flex justify-center items-center text-blue-700 w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
+                    <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-blue-900' : 'cursor-not-allowed'}`}>Guardar</button>
                 </div>
             </form>
         </>

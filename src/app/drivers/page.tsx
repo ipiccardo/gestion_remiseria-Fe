@@ -7,7 +7,7 @@ const page = () => {
     return (
         <div className="w-full">
             <div className="w-80 mb-8">
-                <Button> + Create New Driver </Button>
+                <Button> + New Driver </Button>
             </div>
             <div className="w-80 mb-8">
                 <InputDemo />

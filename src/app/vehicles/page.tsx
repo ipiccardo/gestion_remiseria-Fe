@@ -8,7 +8,7 @@ const page = () => {
     return (
         <div className="w-full">
             <div className="w-80 mb-8">
-                <Button> + Create New Vehicle </Button>
+                <Button> + New Vehicle </Button>
             </div>
             <div className="w-80 mb-8">
                 <InputDemo />

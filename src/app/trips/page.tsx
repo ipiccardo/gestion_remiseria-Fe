@@ -7,7 +7,7 @@ const page = () => {
     return (
         <div className="w-full">
             <div className="w-80 mb-8">
-                <Button> + Create New Trip </Button>
+                <Button> + New Trip </Button>
             </div>
             <div className="w-80 mb-8">
                 <InputDemo />
