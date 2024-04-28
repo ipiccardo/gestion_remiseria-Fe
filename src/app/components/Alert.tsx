@@ -29,7 +29,7 @@ export function Alert() {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <Button secondary={true}>Cancel</Button>
+                    <AlertDialogCancel className="outline-none text-base flex items-center justify-center w-32 p-2 rounded border-blue-700 border-solid border-2 text-blue-700 bg-white hover:border-blue-900 hover:text-blue-900">Cancel</AlertDialogCancel>
                     <Button>Continue</Button>
                 </AlertDialogFooter>
             </AlertDialogContent>

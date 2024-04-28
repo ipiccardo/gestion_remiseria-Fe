@@ -2,5 +2,5 @@
 import { Input } from "@/components/ui/input"
 
 export function InputDemo() {
-    return <Input type="text" placeholder="Search" />
+    return <Input className="border-2 border-solid border-blue-700" type="text" placeholder="Search" />
 }
