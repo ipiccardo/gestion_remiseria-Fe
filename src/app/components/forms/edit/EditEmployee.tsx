@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
-import { driver } from '../../../../../types';
-import EmployeeInput from './CustomInput';
+import { driver } from '../../../../../../types';
+import EmployeeInput from '../CustomInput';
 
-const NewEmployeeForm = () => {
+const EditEmployeeForm = ({ id }: any) => {
     const router = useRouter();
     const [formData, setFormData] = useState<driver>({
         nombre: '',
@@ -73,17 +73,6 @@ const NewEmployeeForm = () => {
                 idEmpleado: new Date().getTime()
             };
 
-            // dispatch(updateFormFields(formData));
-            // api.add(paciente).then(() => {
-            //     // router.push('/'),
-            //     setDataUpdated(true)
-
-            // })
-            //     .catch((error) => {
-            //         console.error('Error al agregar paciente:', error);
-            //         setShowAlert(true);
-            //     });
-
         } else {
             setShowAlert(true);
         }
@@ -97,7 +86,7 @@ const NewEmployeeForm = () => {
             <form className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>
                 <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
-                <EmployeeInput type='text' name='dni' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
+                <EmployeeInput type='text' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
                 {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
@@ -110,4 +99,4 @@ const NewEmployeeForm = () => {
     );
 };
 
-export default NewEmployeeForm;
+export default EditEmployeeForm;

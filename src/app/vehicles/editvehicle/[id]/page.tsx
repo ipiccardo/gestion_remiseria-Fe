@@ -1,9 +1,9 @@
-import NewCarForm from '@/app/components/forms/CreateCar'
+import EditCar from '@/app/components/forms/edit/EditCar'
 import React from 'react'
 
 const page = () => {
     return (
-        <NewCarForm />
+        <EditCar />
     )
 }
 

@@ -1,9 +1,14 @@
 import React from 'react'
-import CreateEmployee from '../../../components/forms/CreateEmployee'
+import EditEmployee from '../../../components/forms/edit/EditEmployee'
 
-const page = () => {
+export async function page({ params }: { params: { slug: string } }) {
+
+    const id = params
+
+
+
     return (
-        <CreateEmployee />
+        <EditEmployee id={id} />
     )
 }
 

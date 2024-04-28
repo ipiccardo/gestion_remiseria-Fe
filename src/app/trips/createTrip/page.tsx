@@ -1,4 +1,4 @@
-import CreateTrip from '@/app/components/forms/CreateTrip'
+import CreateTrip from '@/app/components/forms/create/CreateTrip'
 import React from 'react'
 
 const page = () => {

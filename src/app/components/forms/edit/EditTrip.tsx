@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
-import { driver, Trips } from '../../../../../types';
-import EmployeeInput from './CustomInput';
+import { driver, Trips } from '../../../../../../types';
+import EmployeeInput from '../CustomInput';
 
-const NewTripForm = () => {
+const EditTripForm = () => {
     const router = useRouter();
     const [formData, setFormData] = useState<Trips>({
         date: '',
@@ -106,4 +106,4 @@ const NewTripForm = () => {
     );
 };
 
-export default NewTripForm;
+export default EditTripForm;

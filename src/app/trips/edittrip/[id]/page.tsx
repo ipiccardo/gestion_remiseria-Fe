@@ -1,9 +1,9 @@
-import CreateTrip from '@/app/components/forms/CreateTrip'
+import EditTrip from '@/app/components/forms/edit/EditTrip'
 import React from 'react'
 
 const page = () => {
     return (
-        <CreateTrip />
+        <EditTrip />
     )
 }
 

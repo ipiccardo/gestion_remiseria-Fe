@@ -1,4 +1,4 @@
-import NewCarForm from '@/app/components/forms/CreateCar'
+import NewCarForm from '@/app/components/forms/create/CreateCar'
 import React from 'react'
 
 const page = () => {
