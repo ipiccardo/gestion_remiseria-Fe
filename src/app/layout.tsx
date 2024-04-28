@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className='flex gap-8'>
           <SideBar />
-          <main className="flex min-h-screen flex-col items-center justify-between py-24 w-full">
+          <main className="flex min-h-screen flex-col items-center justify-between py-24 pr-8 w-full">
             <div className="absolute top-0 left-52 py-4">
               <BreadcrumbWithCustomSeparator />
             </div>

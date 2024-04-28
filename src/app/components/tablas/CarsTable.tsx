@@ -22,7 +22,7 @@ export function CarsTable() {
                     <TableHead className="text-white">Model</TableHead>
                     <TableHead className="text-white">Year</TableHead>
                     <TableHead className="text-white ">KMs</TableHead>
-                    <TableHead className="text-white">Is Available</TableHead>
+                    <TableHead className="text-white flex justify-center items-center">Is Available</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -35,7 +35,7 @@ export function CarsTable() {
                             <TableCell>{modelo}</TableCell>
                             <TableCell className="">{new Date().getFullYear()}</TableCell>
                             <TableCell className="font-medium">{kilometraje}</TableCell>
-                            <TableCell>{disponible.toString()}</TableCell>
+                            <TableCell className="flex justify-center">{disponible ? <img src='icons/checked.svg'></img> : <img src='icons/rejected.svg'></img>}</TableCell>
                         </TableRow>
                     );
                 })}

@@ -103,7 +103,7 @@ const NewCarForm = () => {
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
-                    <Link href='/' className='border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-violet-700 '>Cancelar</Link>
+                    <Link href='/' className='border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
                     <button type='submit' onClick={(e) => handleSave(e)} className={`bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-violet-800' : 'cursor-not-allowed'}`}>Guardar</button>
                 </div>
             </form>

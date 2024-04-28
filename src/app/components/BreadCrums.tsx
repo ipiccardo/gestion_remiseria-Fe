@@ -20,7 +20,7 @@ export function BreadcrumbWithCustomSeparator() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbPage>Crear</BreadcrumbPage>
+                    <BreadcrumbPage>Create</BreadcrumbPage>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>

@@ -26,7 +26,7 @@ export function DriversTable() {
                     <TableHead className="text-white">Month</TableHead>
                     <TableHead className="text-white">Licence Type</TableHead>
                     <TableHead className="text-white ">Emision Date</TableHead>
-                    <TableHead className="text-white ">Able</TableHead>
+                    <TableHead className="text-white  flex justify-center items-center">Is Available</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -40,7 +40,8 @@ export function DriversTable() {
                         <TableCell>{liquidaciones.find((employee) => empleado.idEmpleado === employee.idEmpleado)?.sueldo}</TableCell>
                         <TableCell>{licencias.find((licencia) => licencia.idLicencia === empleado.idLicencia)?.tipo}</TableCell>
                         <TableCell className="">{'invoice'}</TableCell>
-                        <TableCell className="">{'invoice'}</TableCell>
+                        {/* PONER EL CONDICIONAR DE RECHAZADO O APROBADO */}
+                        <TableCell className="flex justify-center"><img src='icons/checked.svg'></img></TableCell>
                     </TableRow>
                 ))}
             </TableBody>

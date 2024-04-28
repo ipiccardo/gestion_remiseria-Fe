@@ -9,7 +9,7 @@ const Button = ({ children }: any) => {
                 'trips'}/${children.includes('Driver') ?
                     'createemployee' : children.includes('Vehicle') ?
                         'createvehicle' :
-                        'createtrip'}`} className='bg-blue-800  text-white p-2 rounded hover:bg-blue-400 '>{children}</Link>
+                        'createtrip'}`} className='bg-blue-800  text-white p-2 rounded hover:bg-blue-900 '>{children}</Link>
     )
 }
 
