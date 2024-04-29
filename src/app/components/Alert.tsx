@@ -1,3 +1,4 @@
+'use client'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -10,11 +11,50 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Button from "../components/Button"
+import { empleados, vehiculos, licencias, liquidaciones, trips } from '../../../../data.json'
+import { useEffect, useState } from "react"
 
-export function Alert({ id }: any) {
+
+export function Alert({ id, type }: any) {
+
+
+    const [datoAliminar, setDatoAEliminar] = useState<any>({})
+
+
+
+
+    const handleClick = () => {
+
+        if (type === "vehiculo") {
+            const data = vehiculos.find((vehiculo) => {
+                return vehiculo.idVehiculo === id;
+            });
+            setDatoAEliminar(data);
+
+            return
+        } else if (type === "conductor") {
+            const data = empleados.find((empleado) => {
+                return empleado.idEmpleado.toString() === id.toString();
+            });
+
+            setDatoAEliminar(data);
+            return
+        } else if (type === "viaje") {
+            const data = trips.find((viaje) => {
+                return viaje.tripId === id;
+            });
+            setDatoAEliminar(data);
+            return
+        }
+
+    }
+
+
+
+
     return (
         <AlertDialog>
-            <AlertDialogTrigger asChild>
+            <AlertDialogTrigger asChild onClick={handleClick}>
                 <svg className="hover:fill-blue-900" xmlns="http://www.w3.org/2000/svg" id="Isolation_Mode" data-name="Isolation Mode" viewBox="0 0 24 24" width="20" height="20" fill='#1d4ed8'>
                     <path d="M23,3H18V2.5A2.5,2.5,0,0,0,15.5,0h-7A2.5,2.5,0,0,0,6,2.5V3H1V6H3V21a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V6h2ZM18,21H6V6H18Z" />
                     <rect x="8" y="9" width="3" height="9" />
@@ -25,7 +65,7 @@ export function Alert({ id }: any) {
                 <AlertDialogHeader>
                     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This action cannot be undone.
+                        {`This action cannot be undone. you will eliminate`}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>

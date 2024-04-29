@@ -49,7 +49,7 @@ export function CarsTable() {
                                         </svg>
                                     </Link>
                                     <div className={`flex justify-center`}>
-                                        <Alert id={idVehiculo} />
+                                        <Alert id={idVehiculo} type='vehiculo' />
                                     </div>
 
                                 </div>

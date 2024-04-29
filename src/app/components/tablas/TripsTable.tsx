@@ -56,7 +56,7 @@ export function TripsTable() {
                                     </svg>
                                 </Link>
                                 <div className={`flex justify-center`}>
-                                    <Alert id={tripId} />
+                                    <Alert id={tripId} type='viaje' />
                                 </div>
 
                             </div></TableCell>
