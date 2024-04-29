@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
 import { driver } from '../../../../../../types';
 import EmployeeInput from '../CustomInput';
+import { SelectInput } from '../selectInput';
 
 const NewEmployeeForm = () => {
     const router = useRouter();
@@ -106,8 +107,10 @@ const NewEmployeeForm = () => {
                 <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='text' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
-                <EmployeeInput type='text' name='Tipo de Licencia' value={formData.tipoLicencia} onChange={(value: string) => handleInputChange('tipoLicencia', value)} />
+                {/* <EmployeeInput type='text' name='Tipo de Licencia' value={formData.tipoLicencia} onChange={(value: string) => handleInputChange('tipoLicencia', value)} /> */}
                 <EmployeeInput type='text' name='Fecha Emision' value={formData.fechaEmision} onChange={(value: string) => handleInputChange('fechaEmision', value)} />
+                <SelectInput name='Tipo de Licencia' data={formData} />
+
                 {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
 import { driver, Trips } from '../../../../../../types';
 import EmployeeInput from '../CustomInput';
+import { SelectInput } from '../selectInput';
 
 const EditTripForm = () => {
     const router = useRouter();
@@ -102,8 +103,10 @@ const EditTripForm = () => {
                 <EmployeeInput type='text' name='Price x Kilometres' value={formData.KilometerCost} onChange={(value: string) => handleInputChange('KilometerCost', value)} />
                 <EmployeeInput type='text' name='Total Kilometres' value={formData.totalKilometers} onChange={(value: string) => handleInputChange('totalKilometers', value)} />
                 <EmployeeInput type='text' name='Kilometres' value={formData.Kms} onChange={(value: string) => handleInputChange('Kms', value)} />
-                <EmployeeInput type='text' name='Driver' value={formData.driver} onChange={(value: string) => handleInputChange('driver', value)} />
-                <EmployeeInput type='text' name='Vehicle' value={formData.Vehicle} onChange={(value: string) => handleInputChange('Vehicle', value)} />
+                {/* <EmployeeInput type='text' name='Driver' value={formData.driver} onChange={(value: string) => handleInputChange('driver', value)} />
+                <EmployeeInput type='text' name='Vehicle' value={formData.Vehicle} onChange={(value: string) => handleInputChange('Vehicle', value)} /> */}
+                <SelectInput name='Driver' data={formData} />
+                <SelectInput name='Vehicle' data={formData} />
                 {/* <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
