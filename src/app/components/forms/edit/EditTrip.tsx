@@ -97,7 +97,6 @@ const EditTripForm = () => {
 
     return (
         <>
-
             <form className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>
                 <EmployeeInput type='text' name='Date' value={formData.date} onChange={(value: string) => handleInputChange('date', value)} />
                 <EmployeeInput type='text' name='Price x Kilometres' value={formData.KilometerCost} onChange={(value: string) => handleInputChange('KilometerCost', value)} />
