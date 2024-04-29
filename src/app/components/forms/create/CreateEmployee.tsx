@@ -16,7 +16,9 @@ const NewEmployeeForm = () => {
         dni: '',
         idLicencia: 0,
         vehiculosAsignados: '',
-        idEmpleado: 0
+        idEmpleado: 0,
+        tipoLicencia: '',
+        fechaEmision: ''
     });
     const [validFields, setValidFields] = useState<Record<keyof driver, boolean>>({
         nombre: false,
@@ -25,6 +27,8 @@ const NewEmployeeForm = () => {
         idLicencia: false,
         vehiculosAsignados: false,
         idEmpleado: false,
+        tipoLicencia: false,
+        fechaEmision: false,
     });
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
@@ -72,7 +76,9 @@ const NewEmployeeForm = () => {
                 dni: parseInt(formData.dni),
                 idLicencia: formData.idLicencia,
                 vehiculosAsignados: formData.vehiculosAsignados,
-                idEmpleado: new Date().getTime()
+                idEmpleado: new Date().getTime(),
+                tipoLicencia: formData.tipoLicencia,
+                fechaEmision: formData.fechaEmision
             };
 
             // dispatch(updateFormFields(formData));
@@ -100,6 +106,8 @@ const NewEmployeeForm = () => {
                 <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='text' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
+                <EmployeeInput type='text' name='Tipo de Licencia' value={formData.tipoLicencia} onChange={(value: string) => handleInputChange('tipoLicencia', value)} />
+                <EmployeeInput type='text' name='Fecha Emision' value={formData.fechaEmision} onChange={(value: string) => handleInputChange('fechaEmision', value)} />
                 {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}

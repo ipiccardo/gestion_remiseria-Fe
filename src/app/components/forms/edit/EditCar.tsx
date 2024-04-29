@@ -17,7 +17,11 @@ const EditForm = () => {
         kilometraje: 0,
         disponible: true,
         idVehiculo: 0,
-        idEmpleado: 0
+        idEmpleado: 0,
+        estado: true,
+        año: '',
+
+
     });
     const [validFields, setValidFields] = useState<Record<keyof Vehiculo, boolean>>({
         dominio: false,
@@ -27,6 +31,8 @@ const EditForm = () => {
         disponible: false,
         idEmpleado: false,
         idVehiculo: false,
+        estado: false,
+        año: false
     });
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
@@ -101,6 +107,9 @@ const EditForm = () => {
                 <EmployeeInput type='text' name='Dominio' value={formData.dominio} onChange={(value: string) => handleInputChange('dominio', value)} />
                 <EmployeeInput type='text' name='Marca' value={formData.marca} onChange={(value: string) => handleInputChange('marca', value)} />
                 <EmployeeInput type='text' name='Modelo' value={formData.modelo} onChange={(value: string) => handleInputChange('modelo', value)} />
+                <EmployeeInput type='text' name='Año' value={formData.año} onChange={(value: string) => handleInputChange('año', value)} />
+                <EmployeeInput type='text' name='Estado' value={formData.estado} onChange={(value: string) => handleInputChange('estado', value)} />
+                <EmployeeInput type='text' name='Empleado' value={formData.idEmpleado} onChange={(value: string) => handleInputChange('idEmpleado', value)} />
                 {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}

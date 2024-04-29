@@ -17,11 +17,7 @@ import { useEffect, useState } from "react"
 
 export function Alert({ id, type }: any) {
 
-
     const [datoAliminar, setDatoAEliminar] = useState<any>({})
-
-
-
 
     const handleClick = () => {
 
