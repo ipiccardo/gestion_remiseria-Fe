@@ -19,7 +19,6 @@ export async function DriversTable() {
         return data
     })
 
-
     return (
         <Table>
             <TableCaption>A list of your recent invoices.</TableCaption>
@@ -51,14 +50,12 @@ export async function DriversTable() {
                             <TableCell className="font-medium">{nombre}</TableCell>
                             <TableCell>{apellido}</TableCell>
                             <TableCell>{dni}</TableCell>
-                            <TableCell className="">{licencias.find((licencia) => licencia.idLicencia === id)?.tipo}</TableCell>
-                            {/* <TableCell className="font-medium">{vehiculos.filter((vehicle) => vehicle.id=== id.reduce((acc, vehicle) => acc + vehicle.kilometraje, 0)}</TableCell> */}
+                            <TableCell>{licencia_vigente ? 'Available' : 'Expired'}</TableCell>
                             <TableCell className="font-medium"></TableCell>
                             <TableCell>{salario}</TableCell>
                             <TableCell>{tipo}</TableCell>
                             <TableCell className="">{fechaLicencia}</TableCell>
-                            {/* PONER EL CONDICIONAR DE RECHAZADO O APROBADO */}
-                            <TableCell className="flex justify-center"><img src='icons/checked.svg'></img></TableCell>
+                            <TableCell className="flex justify-center">{licencia_vigente ? <img src='icons/checked.svg' /> : <img src='icons/rejected.svg' />}</TableCell>
                             <TableCell> <div className="flex cursor-pointer gap-3 justify-center">
                                 <Link href={`/drivers/editemployee/${id}`} className={`flex justify-center`}>
                                     <svg className="hover:fill-blue-900" xmlns="http://www.w3.org/2000/svg" id="Bold" viewBox="0 0 24 24" width="20" height="20" fill='#1d4ed8'>
@@ -74,11 +71,9 @@ export async function DriversTable() {
                         </TableRow>
                     )
                 }
-
                 )}
             </TableBody>
             <TableFooter>
-
             </TableFooter>
         </Table >
     )

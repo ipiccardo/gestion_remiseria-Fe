@@ -20,8 +20,6 @@ export async function CarsTable() {
         return data
     })
 
-    console.log(vehicles, 'autos')
-
     return (
         <Table>
             <TableCaption>A list of your recent invoices.</TableCaption>
@@ -37,8 +35,8 @@ export async function CarsTable() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {vehicles.vehiculos.map((vehiculo: Vehiculo) => {
-                    const { id, dominio, marca, modelo, kilometraje, disponible, idEmpleado } = vehiculo;
+                {vehicles.VEHICULOS?.map((vehiculo: Vehiculo) => {
+                    const { id, dominio, marca, modelo, kilometraje, disponible, idEmpleado, estado } = vehiculo;
                     return (
                         <TableRow key={id}>
                             <TableCell>{dominio}</TableCell>
@@ -46,7 +44,7 @@ export async function CarsTable() {
                             <TableCell>{modelo}</TableCell>
                             <TableCell>{new Date().getFullYear()}</TableCell>
                             <TableCell>{kilometraje}</TableCell>
-                            <TableCell>{disponible ? <img className="flex justify-center m-auto" src='icons/checked.svg'></img> : <img className="flex justify-center m-auto" src='icons/rejected.svg'></img>}</TableCell>
+                            <TableCell>{estado ? <img className="flex justify-center m-auto" src='icons/checked.svg'></img> : <img className="flex justify-center m-auto" src='icons/rejected.svg'></img>}</TableCell>
                             <TableCell>
                                 <div className="flex cursor-pointer gap-3 justify-center">
                                     <Link href={`/vehicles/editvehicle/${id}`} className={`flex justify-center`}>
