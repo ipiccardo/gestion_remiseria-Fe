@@ -1,0 +1,111 @@
+{
+  "empleados": [
+    {
+      "idEmpleado": 1,
+      "nombre": "Juan",
+      "apellido": "Perez",
+      "dni": "12345678",
+      "idLicencia": 1,
+      "vehiculosAsignados": [1, 2]
+    },
+    {
+      "idEmpleado": 2,
+      "nombre": "María",
+      "apellido": "González",
+      "dni": "87654321",
+      "idLicencia": 2,
+      "vehiculosAsignados": [3]
+    }
+  ],
+  "vehiculos": [
+    {
+      "idVehiculo": 1,
+      "dominio": "ABC123",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "kilometraje": 50000,
+      "disponible": true,
+      "idEmpleado": 1
+    },
+    {
+      "idVehiculo": 2,
+      "dominio": "DEF456",
+      "marca": "Ford",
+      "modelo": "Focus",
+      "kilometraje": 40000,
+      "disponible": false,
+      "idEmpleado": 1
+    },
+    {
+      "idVehiculo": 3,
+      "dominio": "GHI789",
+      "marca": "Chevrolet",
+      "modelo": "Cruze",
+      "kilometraje": 60000,
+      "disponible": true,
+      "idEmpleado": 2
+    }
+  ],
+  "licencias": [
+    {
+      "idLicencia": 1,
+      "tipo": "Particular",
+      "vigencia": 5
+    },
+    {
+      "idLicencia": 2,
+      "tipo": "Profesional",
+      "vigencia": 1
+    }
+  ],
+  "liquidaciones": [
+    {
+      "idEmpleado": 1,
+      "nombreEmpleado": "Juan Perez",
+      "sueldo": 35000
+    },
+    {
+      "idEmpleado": 2,
+      "nombreEmpleado": "María González",
+      "sueldo": 0
+    }
+  ],
+  "trips": [
+    {
+      "date": "2024-04-27",
+      "hour": "09",
+      "minutes": "30",
+      "Kms": 150,
+      "name": "John",
+      "surname": "Doe",
+      "plate": "ABC123",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "tripId": 1
+    },
+    {
+      "date": "2024-04-28",
+      "hour": "10",
+      "minutes": "15",
+      "Kms": 200,
+      "name": "Jane",
+      "surname": "Smith",
+      "plate": "DEF456",
+      "brand": "Ford",
+      "model": "Focus",
+      "tripId": 2
+    },
+    {
+      "date": "2024-04-29",
+      "hour": "11",
+      "minutes": "00",
+      "Kms": 180,
+      "name": "Alice",
+      "surname": "Johnson",
+      "plate": "GHI789",
+      "brand": "Chevrolet",
+      "model": "Cruze",
+      "tripId": 3
+    }
+  ]
+}

@@ -11,7 +11,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Button from "../components/Button"
-import { empleados, vehiculos, licencias, liquidaciones, trips } from '../../../../data.json'
+import { empleados, vehiculos, licencias, liquidaciones, trips } from '../../../data.json'
 import { useEffect, useState } from "react"
 
 
