@@ -5,6 +5,7 @@ import { DriversTable } from '../components/tablas/DriversTable'
 import { PaginationDemo } from '../components/Pagination'
 import { Suspense } from 'react'
 import { driverApi } from '@/api'
+import { revalidatePath } from 'next/cache'
 
 
 
@@ -16,7 +17,7 @@ export default async function Page({ searchParams }: {
 
     const driver = searchParams?.searchdriver || ''
 
-    // const singleEmployee = await driverApi.fetch()
+    revalidatePath('drivers')
 
     return (
         <div className="w-full">

@@ -6,6 +6,9 @@ import { usePathname, useRouter } from 'next/navigation'
 import { driver } from '../../../../../types';
 import EmployeeInput from '../CustomInput';
 import { SelectInput } from '../selectInput';
+import { createEmployee } from '@/lib/actions';
+import { DialogDemo } from '../../Dialog';
+
 
 const NewEmployeeForm = () => {
     const router = useRouter();
@@ -17,7 +20,7 @@ const NewEmployeeForm = () => {
         apellido: '',
         dni: 0,
         tipo: '',
-        fecha_emision: 0,
+        fecha_emision: '2024-01-10',
     });
     const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
         nombre: false,
@@ -27,19 +30,7 @@ const NewEmployeeForm = () => {
         fecha_emision: false,
     });
     const [showAlert, setShowAlert] = useState(false);
-    const [allData, setAllData] = useState([])
-    const [dataUpdated, setDataUpdated] = useState(false)
-
-
-    useEffect(() => {
-        fetch('/api/empleados').then((resp) => resp.json()).then((newData) => {
-            if (dataUpdated) {
-                router.push('/')
-                setDataUpdated(false)
-            }
-            setAllData(newData.data)
-        })
-    }, [dataUpdated])
+    const [formSubmitted, setFormSubmitted] = useState(false)
 
 
     const handleInputChange = (fieldName: keyof driver, value: string) => {
@@ -81,19 +72,24 @@ const NewEmployeeForm = () => {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
                     },
                     body: JSON.stringify(driver)
                 }
-            )
+            ).then(() => setFormSubmitted(true))
         }
     };
 
-
+    console.log(sendBack)
+    if (formSubmitted) {
+        return (
+            <DialogDemo sendBack={sendBack} data={'Empleado'} />
+        )
+    }
 
     return (
         <>
-
             <form className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>
                 <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />

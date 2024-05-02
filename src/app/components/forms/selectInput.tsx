@@ -16,7 +16,6 @@ export function SelectInput({ name, data, onChange }: any) {
 
     const handleSelect = (e: any) => {
         if (onChange) {
-            console.log('entro aca')
             const newValue = e;
             onChange(newValue);
         }
