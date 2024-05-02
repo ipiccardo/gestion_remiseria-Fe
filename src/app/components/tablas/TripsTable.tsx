@@ -39,11 +39,15 @@ export async function TripsTable({ trip }: any) {
             </TableHeader>
             <TableBody>
                 {trips?.map((trip: Trips) => {
-                    const { id, nombre, apellido, dni, fecha, kilometros_recorridos, marca, modelo, anio, patente, kilometraje } = trip;
+                    const { id, nombre, apellido, dni, fecha, kilometros_recorridos, marca, modelo, anio, patente, kilometros } = trip;
+                    const formatFecha = fecha.split('T')
+                    const correctDate = formatFecha[0]
+
+
                     return (
                         <TableRow key={id}>
-                            <TableCell className="font-medium">{fecha}</TableCell>
-                            <TableCell>{kilometraje}</TableCell>
+                            <TableCell className="font-medium">{correctDate}</TableCell>
+                            <TableCell>{kilometros}</TableCell>
                             <TableCell>{kilometros_recorridos}</TableCell>
                             <TableCell>{nombre}</TableCell>
                             <TableCell>{apellido}</TableCell>

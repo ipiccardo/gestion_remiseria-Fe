@@ -2,7 +2,7 @@ export interface driver {
   id: number;
   nombre: string;
   apellido: string;
-  dni: number;
+  dni: number | null;
   tipo: string;
   licencia_vigente?: boolean;
   fecha_emision?: any;
@@ -40,12 +40,15 @@ export interface Trips {
   id: number;
   nombre: string;
   apellido: string;
-  dni: number;
+  dni?: number;
   fecha: string;
-  kilometros_recorridos: number;
+  kilometros_recorridos?: number;
   marca: string;
   modelo: string;
-  anio: number;
+  anio?: number;
   patente: string;
-  kilometraje: number;
+  kilometros: number;
+  precio_kilometro: number;
+  id_vehiculo: number;
+  id_empleado: number;
 }

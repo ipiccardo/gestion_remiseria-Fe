@@ -24,12 +24,12 @@ const EditEmployeeForm = ({ driver }: { driver: driver }) => {
         fecha_emision: correctDate,
     });
     const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
-        id: false,
-        nombre: false,
-        apellido: false,
-        dni: false,
-        tipo: false,
-        fecha_emision: false,
+        id: true,
+        nombre: true,
+        apellido: true,
+        dni: true,
+        tipo: true,
+        fecha_emision: true,
     });
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
@@ -102,7 +102,7 @@ const EditEmployeeForm = ({ driver }: { driver: driver }) => {
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
-                    <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-violet-800' : 'cursor-not-allowed'}`}>Guardar</button>
+                    <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-blue-800' : 'cursor-not-allowed'}`}>Guardar</button>
                 </div>
             </form>
         </>

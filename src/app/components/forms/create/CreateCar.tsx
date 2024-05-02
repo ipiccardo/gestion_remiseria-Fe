@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
-import { driver, Vehiculo } from '../../../../../../types';
+import { driver, Vehiculo } from '../../../../../types';
 import EmployeeInput from '../CustomInput';
 import { usePathname } from 'next/navigation'
 import { SelectInput } from '../selectInput';
@@ -13,27 +13,30 @@ const NewCarForm = () => {
     const pathName = usePathname()
     const sendBack = pathName.split('/')[1]
     const [formData, setFormData] = useState<Vehiculo>({
+        id: 0,
         dominio: '',
         marca: '',
         modelo: '',
         kilometraje: 0,
-        disponible: true,
-        idVehiculo: 0,
+        disponible: false,
         idEmpleado: 0,
-        estado: true,
-        año: '',
+        anio: '',
+        estado: false,
+        apellido: "",
     });
-    const [validFields, setValidFields] = useState<Record<keyof Vehiculo, boolean>>({
+    const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
+        id: false,
         dominio: false,
         marca: false,
         modelo: false,
         kilometraje: false,
         disponible: false,
         idEmpleado: false,
-        idVehiculo: false,
-        estado: true,
-        año: false,
+        anio: false,
+        estado: false,
+        apellido: false
     });
+
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
     const [dataUpdated, setDataUpdated] = useState(false)
@@ -107,17 +110,13 @@ const NewCarForm = () => {
                 <EmployeeInput type='text' name='Dominio' value={formData.dominio} onChange={(value: string) => handleInputChange('dominio', value)} />
                 <EmployeeInput type='text' name='Marca' value={formData.marca} onChange={(value: string) => handleInputChange('marca', value)} />
                 <EmployeeInput type='text' name='Modelo' value={formData.modelo} onChange={(value: string) => handleInputChange('modelo', value)} />
-                <EmployeeInput type='text' name='Año' value={formData.año} onChange={(value: string) => handleInputChange('año', value)} />
-                {/* <EmployeeInput type='text' name='Estado' value={formData.estado} onChange={(value: string) => handleInputChange('estado', value)} /> */}
-                <SelectInput name='Estado' data={formData} />
-                <SelectInput name='Empleado' data={formData} />
-                {/* <EmployeeInput type='text' name='Empleado' value={formData.idEmpleado} onChange={(value: string) => handleInputChange('idEmpleado', value)} /> */}
-                {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
-                <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
+                <EmployeeInput type='text' name='Año' value={formData.anio} onChange={(value: string) => handleInputChange('anio', value)} />
+                <SelectInput name='Estado' data={formData.estado} />
+                <SelectInput name='Empleado' data={formData.apellido} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
-                    <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-violet-800' : 'cursor-not-allowed'}`}>Guardar</button>
+                    <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-blue-800' : 'cursor-not-allowed'}`}>Guardar</button>
                 </div>
             </form>
         </>

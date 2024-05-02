@@ -31,12 +31,12 @@ export const driverApi = {
   search: async (query: string): Promise<driver[]> => {
     const results = await driverApi
       .list()
-      .then((restos) =>
-        restos.filter(
+      .then((res) =>
+        res.filter(
           (res) =>
             res.nombre.toLowerCase().includes(query?.toLowerCase()) ||
             res.apellido.toLowerCase().includes(query?.toLowerCase()) ||
-            res.dni.toString().toLowerCase().includes(query?.toLowerCase()) ||
+            res?.dni?.toString().toLowerCase().includes(query?.toLowerCase()) ||
             res.tipo.toLowerCase().includes(query?.toString())
         )
       );
@@ -75,8 +75,8 @@ export const vehicleApi = {
   search: async (query: string): Promise<Vehiculo[]> => {
     const results = await vehicleApi
       .list()
-      .then((restos: any) =>
-        restos.filter(
+      .then((res: any) =>
+        res.filter(
           (res: any) =>
             res.dominio.toLowerCase().includes(query?.toLowerCase()) ||
             res.marca.toLowerCase().includes(query?.toLowerCase()) ||
@@ -117,8 +117,8 @@ export const tripsApi = {
   search: async (query: string): Promise<Trips[]> => {
     const results = await tripsApi
       .list()
-      .then((restos) =>
-        restos.filter(
+      .then((res) =>
+        res?.filter(
           (res) =>
             res.apellido.toLowerCase().includes(query?.toLowerCase()) ||
             res.nombre.toLowerCase().includes(query?.toLowerCase()) ||

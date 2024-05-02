@@ -12,7 +12,15 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-export function SelectInput({ name, data }: any) {
+export function SelectInput({ name, data, onChange }: any) {
+
+    const handleSelect = (e: any) => {
+        if (onChange) {
+            console.log('entro aca')
+            const newValue = e;
+            onChange(newValue);
+        }
+    }
 
     const [placeholder, setPlaceHolder] = useState('')
 
@@ -32,7 +40,7 @@ export function SelectInput({ name, data }: any) {
     return (
         <div className="w-full">
             <label className='text-gray-800'>{name}</label>
-            <Select>
+            <Select onValueChange={(e) => handleSelect(e)}>
                 <SelectTrigger className="w-full mt-2">
                     <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
@@ -55,7 +63,7 @@ export function SelectInput({ name, data }: any) {
                             ) :
 
                             (
-                                <SelectGroup defaultValue={data ? data : ''}>
+                                <SelectGroup defaultValue={data ? data : ''} onSelect={(e) => handleSelect(e.target.addEventListener.name)}>
                                     <SelectLabel>Licencia</SelectLabel>
                                     <SelectItem value="estandar">Estandar</SelectItem>
                                     <SelectItem value="profesional">Profesional</SelectItem>
