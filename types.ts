@@ -2,12 +2,12 @@ export interface driver {
   id: number;
   nombre: string;
   apellido: string;
-  dni: string;
-  tipo: number;
-  licencia_vigente: boolean;
+  dni: number;
+  tipo: string;
+  licencia_vigente?: boolean;
   fecha_emision?: any;
   salario?: string;
-  ult_periodo: any;
+  ult_periodo?: any;
 }
 
 export interface Vehiculo {
@@ -18,8 +18,10 @@ export interface Vehiculo {
   kilometraje: number;
   disponible?: boolean;
   idEmpleado?: number;
-  año?: string;
+  anio?: any;
   estado?: boolean;
+  nombre?: string;
+  apellido?: string;
 }
 
 export interface Licencia {

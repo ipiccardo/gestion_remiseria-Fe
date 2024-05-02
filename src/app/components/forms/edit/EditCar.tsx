@@ -3,37 +3,37 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
-import { driver, Vehiculo } from '../../../../../../types';
+import { driver, Vehiculo } from '../../../../../types';
 import EmployeeInput from '../CustomInput';
 import { SelectInput } from '../selectInput';
 
-const EditForm = () => {
+const EditForm = ({ vehicle }: { vehicle: Vehiculo }) => {
     const router = useRouter();
     const pathName = usePathname()
     const sendBack = pathName.split('/')[1]
     const [formData, setFormData] = useState<Vehiculo>({
-        dominio: '',
-        marca: '',
-        modelo: '',
-        kilometraje: 0,
-        disponible: true,
-        idVehiculo: 0,
-        idEmpleado: 0,
-        estado: true,
-        año: '',
-
-
+        id: vehicle.id,
+        dominio: vehicle.dominio,
+        marca: vehicle.marca,
+        modelo: vehicle.modelo,
+        kilometraje: vehicle.kilometraje,
+        disponible: vehicle.disponible,
+        idEmpleado: vehicle.idEmpleado,
+        anio: vehicle.anio,
+        estado: vehicle.estado,
+        apellido: vehicle.apellido
     });
-    const [validFields, setValidFields] = useState<Record<keyof Vehiculo, boolean>>({
+    const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
+        id: false,
         dominio: false,
         marca: false,
         modelo: false,
         kilometraje: false,
         disponible: false,
         idEmpleado: false,
-        idVehiculo: false,
+        anio: false,
         estado: false,
-        año: false
+        apellido: false
     });
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
@@ -108,11 +108,11 @@ const EditForm = () => {
                 <EmployeeInput type='text' name='Dominio' value={formData.dominio} onChange={(value: string) => handleInputChange('dominio', value)} />
                 <EmployeeInput type='text' name='Marca' value={formData.marca} onChange={(value: string) => handleInputChange('marca', value)} />
                 <EmployeeInput type='text' name='Modelo' value={formData.modelo} onChange={(value: string) => handleInputChange('modelo', value)} />
-                <EmployeeInput type='text' name='Año' value={formData.año} onChange={(value: string) => handleInputChange('año', value)} />
+                <EmployeeInput type='text' name='Año' value={formData.anio} onChange={(value: string) => handleInputChange('anio', value)} />
                 {/* <EmployeeInput type='text' name='Estado' value={formData.estado} onChange={(value: string) => handleInputChange('estado', value)} />
                 <EmployeeInput type='text' name='Empleado' value={formData.idEmpleado} onChange={(value: string) => handleInputChange('idEmpleado', value)} /> */}
-                <SelectInput name='Estado' data={formData} />
-                <SelectInput name='Empleado' data={formData} />
+                <SelectInput name='Estado' data={formData.estado} />
+                <SelectInput name='Empleado' data={formData.apellido} />
                 {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
                 <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}

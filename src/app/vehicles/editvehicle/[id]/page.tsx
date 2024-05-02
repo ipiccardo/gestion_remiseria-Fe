@@ -1,9 +1,15 @@
+import { vehicleApi } from '@/api'
 import EditCar from '@/app/components/forms/edit/EditCar'
 import React from 'react'
 
-const page = () => {
+export async function page({ params }: { params: { slug: string } }) {
+
+    const id = params
+
+    const vehicle = await vehicleApi.fetch(id)
+
     return (
-        <EditCar />
+        <EditCar vehicle={vehicle} />
     )
 }
 

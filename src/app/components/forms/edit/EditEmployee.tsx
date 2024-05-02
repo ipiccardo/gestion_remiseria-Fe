@@ -3,41 +3,43 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
-import { driver } from '../../../../../../types';
+import { driver } from '../../../../../types';
 import EmployeeInput from '../CustomInput';
 import { SelectInput } from '../selectInput';
+import { driverApi } from '../../../../api'
 
-const EditEmployeeForm = ({ id }: any) => {
+
+const EditEmployeeForm = ({ driver }: { driver: driver }) => {
     const router = useRouter();
     const pathName = usePathname()
     const sendBack = pathName.split('/')[1]
+    const formatedDate = driver.fecha_emision.split('T')
+    const correctDate = formatedDate[0]
     const [formData, setFormData] = useState<driver>({
-        nombre: '',
-        apellido: '',
-        dni: '',
-        idLicencia: 0,
-        vehiculosAsignados: '',
-        idEmpleado: 0,
-        tipoLicencia: '',
-        fechaEmision: ''
+        id: driver.id,
+        nombre: driver.nombre,
+        apellido: driver.apellido,
+        dni: driver.dni,
+        tipo: driver.tipo,
+        fecha_emision: correctDate,
     });
-    const [validFields, setValidFields] = useState<Record<keyof driver, boolean>>({
+    const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
+        id: false,
         nombre: false,
         apellido: false,
         dni: false,
-        idLicencia: false,
-        vehiculosAsignados: false,
-        idEmpleado: false,
-        tipoLicencia: false,
-        fechaEmision: false
+        tipo: false,
+        fecha_emision: false,
     });
     const [showAlert, setShowAlert] = useState(false);
     const [allData, setAllData] = useState([])
     const [dataUpdated, setDataUpdated] = useState(false)
+    const [defaultData, setDefaultData] = useState({})
 
 
     useEffect(() => {
-        fetch('/api/').then((resp) => resp.json()).then((newData) => {
+
+        fetch('').then((resp) => resp.json()).then((newData) => {
             if (dataUpdated) {
                 router.push('/')
                 setDataUpdated(false)
@@ -74,19 +76,18 @@ const EditEmployeeForm = ({ id }: any) => {
             const driver = {
                 nombre: formData.nombre,
                 apellido: formData.apellido,
-                dni: parseInt(formData.dni),
-                idLicencia: formData.idLicencia,
-                vehiculosAsignados: formData.vehiculosAsignados,
+                dni: formData.dni,
+                id: formData.id,
+                // vehiculosAsignados: formData.vehiculosAsignados,
                 idEmpleado: new Date().getTime(),
-                tipoLicencia: formData.tipoLicencia,
-                fechaEmision: formData.fechaEmision
+                tipo: formData.tipo,
+                fecha_emision: formData.fecha_emision
             };
 
         } else {
             setShowAlert(true);
         }
     };
-
 
 
     return (
@@ -96,12 +97,8 @@ const EditEmployeeForm = ({ id }: any) => {
                 <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='text' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
-                <EmployeeInput type='text' name='Tipo de Licencia' value={formData.tipoLicencia} onChange={(value: string) => handleInputChange('tipoLicencia', value)} />
-                <EmployeeInput type='text' name='Fecha Emision' value={formData.fechaEmision} onChange={(value: string) => handleInputChange('fechaEmision', value)} />
-                <SelectInput name='Tipo de Licencia' data={formData} />
-
-                {/* <EmployeeInput type='text' name='Licencia' value={formData.idLicencia} onChange={(value: string) => handleInputChange('idLicencia', value)} />
-                <EmployeeInput type='text' name='vehiculos Asignados' value={formData.vehiculosAsignados} onChange={(value: string) => handleInputChange('vehiculosAsignados', value)} /> */}
+                <EmployeeInput type='text' name='Fecha Emision' value={formData.fecha_emision} onChange={(value: string) => handleInputChange('fecha_emision', value)} />
+                <SelectInput name='Tipo de Licencia' data={formData.tipo} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>

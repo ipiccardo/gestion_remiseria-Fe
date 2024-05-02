@@ -4,6 +4,7 @@ import { InputDemo } from '../components/SearchBar'
 import { DriversTable } from '../components/tablas/DriversTable'
 import { PaginationDemo } from '../components/Pagination'
 import { Suspense } from 'react'
+import { driverApi } from '@/api'
 
 
 
@@ -14,6 +15,8 @@ export default async function Page({ searchParams }: {
 }) {
 
     const driver = searchParams?.searchdriver || ''
+
+    // const singleEmployee = await driverApi.fetch()
 
     return (
         <div className="w-full">

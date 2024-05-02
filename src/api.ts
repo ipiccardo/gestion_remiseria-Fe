@@ -15,23 +15,29 @@ export const driverApi = {
 
     return data;
   },
-  //   fetch: async (id: Restaurant["id"]): Promise<Restaurant> => {
-  //     await sleep(750);
+  fetch: async (id: any): Promise<any> => {
+    const driver = await driverApi
+      .list()
+      .then((res) =>
+        res.find((empleado) => empleado.id.toString() === id.id.toString())
+      );
 
-  //     const driver = restaurants.find((restaurant) => restaurant.id === id);
+    if (!driver) {
+      throw new Error(`Driver with id ${id} not found`);
+    }
 
-  //     if (!restaurant) {
-  //       throw new Error(`Restaurant with id ${id} not found`);
-  //     }
-
-  //     return restaurant;
-  //   },
+    return driver;
+  },
   search: async (query: string): Promise<driver[]> => {
     const results = await driverApi
       .list()
       .then((restos) =>
-        restos.filter((res) =>
-          res.nombre.toLowerCase().includes(query?.toLowerCase())
+        restos.filter(
+          (res) =>
+            res.nombre.toLowerCase().includes(query?.toLowerCase()) ||
+            res.apellido.toLowerCase().includes(query?.toLowerCase()) ||
+            res.dni.toString().toLowerCase().includes(query?.toLowerCase()) ||
+            res.tipo.toLowerCase().includes(query?.toString())
         )
       );
 
@@ -52,13 +58,29 @@ export const vehicleApi = {
 
     return data;
   },
+  fetch: async (id: any): Promise<any> => {
+    const vehicle = await vehicleApi
+      .list()
+      .then((res) =>
+        res.find((vehicle) => vehicle.id.toString() === id.id.toString())
+      );
+
+    if (!vehicle) {
+      throw new Error(`Vehicle with id ${id} not found`);
+    }
+
+    return vehicle;
+  },
 
   search: async (query: string): Promise<Vehiculo[]> => {
     const results = await vehicleApi
       .list()
-      .then((restos) =>
-        restos.filter((res) =>
-          res.dominio.toLowerCase().includes(query?.toLowerCase())
+      .then((restos: any) =>
+        restos.filter(
+          (res: any) =>
+            res.dominio.toLowerCase().includes(query?.toLowerCase()) ||
+            res.marca.toLowerCase().includes(query?.toLowerCase()) ||
+            res.modelo.toLowerCase().includes(query?.toLowerCase())
         )
       );
 
@@ -79,12 +101,30 @@ export const tripsApi = {
 
     return data;
   },
+  fetch: async (id: any): Promise<any> => {
+    const trip = await tripsApi
+      .list()
+      .then((res) =>
+        res.find((trip) => trip.id.toString() === id.id.toString())
+      );
+
+    if (!trip) {
+      throw new Error(`trip with id ${id} not found`);
+    }
+
+    return trip;
+  },
   search: async (query: string): Promise<Trips[]> => {
     const results = await tripsApi
       .list()
       .then((restos) =>
-        restos.filter((res) =>
-          res.apellido.toLowerCase().includes(query?.toLowerCase())
+        restos.filter(
+          (res) =>
+            res.apellido.toLowerCase().includes(query?.toLowerCase()) ||
+            res.nombre.toLowerCase().includes(query?.toLowerCase()) ||
+            res.patente.toLowerCase().includes(query?.toLowerCase()) ||
+            res.marca.toLowerCase().includes(query?.toString()) ||
+            res.modelo.toLowerCase().includes(query?.toString())
         )
       );
 
