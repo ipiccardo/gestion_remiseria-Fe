@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { CarsTable } from '../components/tablas/CarsTable'
 import Button from '../components/Button'
 import { InputDemo } from '../components/SearchBar'
 import { PaginationDemo } from '../components/Pagination'
 
-const page = () => {
+export default async function page({ searchParams }: {
+    searchParams?: {
+        searchvehicle?: string,
+    }
+}) {
+
+    const vehicle = searchParams?.searchvehicle || ''
 
     return (
         <div className="w-full">
@@ -16,11 +22,12 @@ const page = () => {
             </div>
             {/* <div className="max-w-5xl w-full"> */}
             <div>
-                <CarsTable />
+                <Suspense key={vehicle} fallback={<h1>LOADING....</h1>}>
+                    <CarsTable vehicle={vehicle} />
+                </Suspense>
                 <PaginationDemo />
             </div>
         </div>
     )
 }
 
-export default page
