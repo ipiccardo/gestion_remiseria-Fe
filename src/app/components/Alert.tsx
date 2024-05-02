@@ -11,7 +11,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Button from "../components/Button"
-import { empleados, vehiculos, licencias, liquidaciones, trips } from '../../../data.json'
+// import { empleados, vehiculos, licencias, liquidaciones, trips } from '../../../data.json'
 import { useEffect, useState } from "react"
 
 
@@ -21,27 +21,27 @@ export function Alert({ id, type }: any) {
 
     const handleClick = () => {
 
-        if (type === "vehiculo") {
-            const data = vehiculos.find((vehiculo) => {
-                return vehiculo.idVehiculo === id;
-            });
-            setDatoAEliminar(data);
+        // if (type === "vehiculo") {
+        //     const data = vehiculos?.find((vehiculo) => {
+        //         return vehiculo.idVehiculo === id;
+        //     });
+        //     setDatoAEliminar(data);
 
-            return
-        } else if (type === "conductor") {
-            const data = empleados.find((empleado) => {
-                return empleado.idEmpleado.toString() === id.toString();
-            });
+        //     return
+        // } else if (type === "conductor") {
+        //     const data = empleados?.find((empleado) => {
+        //         return empleado.idEmpleado.toString() === id.toString();
+        //     });
 
-            setDatoAEliminar(data);
-            return
-        } else if (type === "viaje") {
-            const data = trips.find((viaje) => {
-                return viaje.tripId === id;
-            });
-            setDatoAEliminar(data);
-            return
-        }
+        //     setDatoAEliminar(data);
+        //     return
+        // } else if (type === "viaje") {
+        //     const data = trips?.find((viaje) => {
+        //         return viaje.tripId === id;
+        //     });
+        //     setDatoAEliminar(data);
+        //     return
+        // }
 
     }
 

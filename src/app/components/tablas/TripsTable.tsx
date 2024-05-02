@@ -12,13 +12,11 @@ import {
 import Link from "next/link";
 import { Alert } from "../Alert";
 import { Trips } from '../../../../types'
+import { tripsApi } from "@/api";
 
-export async function TripsTable() {
+export async function TripsTable({ trip }: any) {
 
-
-    const trips = await fetch(`${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/`).then((res) => res.json()).then((data) => {
-        return data
-    })
+    const trips = await tripsApi.search(trip)
 
     return (
         <Table>
@@ -40,7 +38,7 @@ export async function TripsTable() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {trips?.VIAJES.map((trip: Trips) => {
+                {trips?.map((trip: Trips) => {
                     const { id, nombre, apellido, dni, fecha, kilometros_recorridos, marca, modelo, anio, patente, kilometraje } = trip;
                     return (
                         <TableRow key={id}>

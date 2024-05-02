@@ -3,13 +3,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { usePathname } from 'next/navigation'
 import { useRouter, useSearchParams, redirect } from "next/navigation";
+import { useDebouncedCallback } from 'use-debounce'
 
 export function InputDemo() {
     const pathName = usePathname()
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const handleSerach = (term: string) => {
+    const handleSerach = useDebouncedCallback((term: string) => {
         const params = new URLSearchParams(searchParams)
         if (term) {
             if (pathName.includes('drivers')) {
@@ -19,12 +20,16 @@ export function InputDemo() {
             } else {
                 params.set('searchtrip', term)
             }
+        } else if (pathName.includes('drivers')) {
+            params.delete('searchdriver')
+        } else if (pathName.includes('vehicles')) {
+            params.delete('searchvehicle')
         } else {
-            params.delete('search')
+            params.delete('searchtrip')
         }
 
         replace(`${pathName}?${params.toString()}`)
-    }
+    })
 
 
     return (

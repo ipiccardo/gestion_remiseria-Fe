@@ -3,8 +3,18 @@ import Button from '../components/Button'
 import { InputDemo } from '../components/SearchBar'
 import { DriversTable } from '../components/tablas/DriversTable'
 import { PaginationDemo } from '../components/Pagination'
+import { Suspense } from 'react'
 
-const page = () => {
+
+
+export default async function Page({ searchParams }: {
+    searchParams?: {
+        searchdriver?: string,
+    }
+}) {
+
+    const driver = searchParams?.searchdriver || ''
+
     return (
         <div className="w-full">
             <div className="w-52 md:w-80 mb-8">
@@ -13,13 +23,14 @@ const page = () => {
             <div className="w-52 md:w-80 mb-8">
                 <InputDemo />
             </div>
-            {/* <div className="max-w-5xl"> */}
             <div>
-                <DriversTable />
+                {/* <Suspense key={driver} fallback={<SkeletonCard />}> */}
+                <Suspense key={driver} fallback={<h1>LOADING....</h1>}>
+                    <DriversTable driver={driver} />
+                </Suspense>
                 <PaginationDemo />
             </div>
         </div>
     )
 }
 
-export default page

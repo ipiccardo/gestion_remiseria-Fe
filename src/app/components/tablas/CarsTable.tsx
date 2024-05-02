@@ -12,13 +12,12 @@ import { vehiculos } from '../../../../data.json'
 import { Vehiculo } from "../../../../types"
 import Link from "next/link";
 import { Alert } from "../Alert";
+import { vehicleApi } from "@/api";
 
 
-export async function CarsTable() {
+export async function CarsTable({ vehicle }: any) {
 
-    const vehicles = await fetch(`${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/`).then((res) => res.json()).then((data) => {
-        return data
-    })
+    const vehicles = await vehicleApi.search(vehicle)
 
     return (
         <Table>
@@ -35,7 +34,7 @@ export async function CarsTable() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {vehicles.VEHICULOS?.map((vehiculo: Vehiculo) => {
+                {vehicles?.map((vehiculo: Vehiculo) => {
                     const { id, dominio, marca, modelo, kilometraje, disponible, idEmpleado, estado } = vehiculo;
                     return (
                         <TableRow key={id}>

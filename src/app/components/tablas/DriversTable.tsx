@@ -12,12 +12,11 @@ import { empleados, vehiculos, licencias, liquidaciones } from '../../../../data
 import Link from "next/link"
 import { Alert } from "../Alert"
 import { driver } from "../../../../types"
+import { driverApi } from '../../../api'
 
-export async function DriversTable() {
+export async function DriversTable({ driver }: any) {
 
-    const drivers = await fetch(`${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/`).then((res) => res.json()).then((data) => {
-        return data
-    })
+    const drivers = await driverApi.search(driver)
 
     return (
         <Table>
@@ -37,7 +36,7 @@ export async function DriversTable() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {drivers.EMPLEADOS.map((empleado: driver) => {
+                {drivers.map((empleado: driver) => {
 
                     const { id, nombre, apellido, dni, tipo, licencia_vigente, fecha_emision, salario, ult_periodo } = empleado
 
