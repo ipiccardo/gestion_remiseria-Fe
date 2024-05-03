@@ -6,8 +6,8 @@ import { usePathname, useRouter } from 'next/navigation'
 import { driver } from '../../../../../types';
 import EmployeeInput from '../CustomInput';
 import { SelectInput } from '../selectInput';
-import { createEmployee } from '@/lib/actions';
 import { DialogDemo } from '../../Dialog';
+import { createEmployeeAction } from '../../../actions/actions';
 
 
 const NewEmployeeForm = () => {
@@ -52,54 +52,20 @@ const NewEmployeeForm = () => {
 
     const allFieldsValid = Object.values(validFields).every(field => field);
 
-    const handleSave = async (e: any) => {
-        e.preventDefault()
-        if (allFieldsValid) {
-            const driver = {
-                nombre: formData.nombre,
-                apellido: formData.apellido,
-                dni: formData.dni,
-                licencia: {
-                    id_licencia: formData.tipo === 'estandar' ? 1 : 2,
-                    duracion: formData.tipo === 'estandar' ? 5 : 1
-                },
-                fecha_emision: formData.fecha_emision
-            };
-
-            await fetch(
-                `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/crear`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*'
-                    },
-                    body: JSON.stringify(driver)
-                }
-            ).then(() => setFormSubmitted(true))
-        }
-    };
-
-    console.log(sendBack)
-    if (formSubmitted) {
-        return (
-            <DialogDemo sendBack={sendBack} data={'Empleado'} />
-        )
-    }
 
     return (
         <>
-            <form className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>
+            <form action={createEmployeeAction} className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>
                 <EmployeeInput type='text' name='Nombre' value={formData.nombre} onChange={(value: string) => handleInputChange('nombre', value)} />
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='number' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
-                <SelectInput name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
+                <SelectInput type='select' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
+                <EmployeeInput type='text' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
                 <EmployeeInput type='date' name='Fecha Emision' value={formData.fecha_emision} onChange={(value: string) => handleInputChange('fecha_emision', value)} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>
-                    <button type='submit' onClick={(e) => handleSave(e)} className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-blue-800' : 'cursor-not-allowed'}`}>Guardar</button>
+                    <button type='submit' className={`flex justify-center items-center w-32 bg-blue-700 text-white p-3 rounded  border-blue-700 ${allFieldsValid ? 'hover:bg-blue-800' : 'cursor-not-allowed'}`}>Guardar</button>
                 </div>
             </form>
         </>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { SelectInput } from './selectInput';
 
 interface CustomFormInputProps {
     type: string;
@@ -22,8 +23,10 @@ const CustomInput: React.FC<CustomFormInputProps> = ({
         }
     };
 
+
+
     return (
-        <div className='flex flex-col gap-2 w-full'>
+        <div className={`${name === 'tipo' && 'hidden'} flex flex-col gap-2 w-full`}>
             <label className='text-gray-800'>{name}</label>
             <input
                 value={value}

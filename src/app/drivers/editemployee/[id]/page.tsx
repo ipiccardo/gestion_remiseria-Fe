@@ -1,6 +1,8 @@
 import React from 'react'
 import EditEmployee from '../../../components/forms/edit/EditEmployee'
 import { driverApi } from '@/api'
+import { revalidatePath } from 'next/cache'
+
 
 export async function page({ params }: { params: { slug: string } }) {
 
@@ -8,8 +10,7 @@ export async function page({ params }: { params: { slug: string } }) {
 
     const driver = await driverApi.fetch(id)
 
-
-
+    revalidatePath('drivers')
 
     return (
         <EditEmployee driver={driver} />

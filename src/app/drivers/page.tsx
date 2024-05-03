@@ -4,10 +4,8 @@ import { InputDemo } from '../components/SearchBar'
 import { DriversTable } from '../components/tablas/DriversTable'
 import { PaginationDemo } from '../components/Pagination'
 import { Suspense } from 'react'
-import { driverApi } from '@/api'
 import { revalidatePath } from 'next/cache'
-
-
+import { redirect } from 'next/navigation'
 
 export default async function Page({ searchParams }: {
     searchParams?: {
@@ -17,7 +15,8 @@ export default async function Page({ searchParams }: {
 
     const driver = searchParams?.searchdriver || ''
 
-    revalidatePath('drivers')
+    revalidatePath('/drivers')
+    // redirect("/drivers");
 
     return (
         <div className="w-full">

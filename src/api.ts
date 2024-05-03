@@ -6,7 +6,7 @@ export const driverApi = {
   list: async (): Promise<driver[]> => {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/`
-      //   { next: { tags: ["drivers"] } }
+      // { next: { tags: ["drivers"] } }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -49,7 +49,6 @@ export const vehicleApi = {
   list: async (): Promise<Vehiculo[]> => {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/`
-      //   { next: { tags: ["drivers"] }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -92,7 +91,6 @@ export const tripsApi = {
   list: async (): Promise<Trips[]> => {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/`
-      //   { next: { tags: ["drivers"] } }
     )
       .then((res) => res.json())
       .then((data) => {
