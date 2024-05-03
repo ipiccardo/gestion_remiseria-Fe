@@ -11,6 +11,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { driver, Vehiculo } from "../../../../types"
 
 export function SelectInput({ name, data, onChange }: any) {
 
@@ -35,6 +36,7 @@ export function SelectInput({ name, data, onChange }: any) {
 
     }, [name])
 
+    console.log(data, 'data')
 
     return (
         <div className="w-full">
@@ -51,23 +53,38 @@ export function SelectInput({ name, data, onChange }: any) {
                                 <SelectItem value="disponible">Disponible</SelectItem>
                                 <SelectItem value="taller">Taller</SelectItem>
                             </SelectGroup>
-                        ) : name === 'Empleado' ?
+                        ) : name === 'Driver' || name === 'Empleado' ?
                             (
                                 <SelectGroup defaultValue={data ? data : ''}>
                                     <SelectLabel>Empleado</SelectLabel>
-                                    {/* ACA VA EL ARRAY DE EMPLEADOS DISPONIBLES--------------------------------- */}
-                                    {/* <SelectItem value="estandar">Estandar</SelectItem>
-                                    <SelectItem value="profesional">Profesional</SelectItem> */}
+                                    {
+                                        data?.map((empleado: driver) => {
+                                            return (
+                                                <SelectItem key={empleado.id} value={empleado.id.toString()}>{`${empleado.apellido} ${empleado.nombre}`}</SelectItem>
+                                            )
+                                        })
+                                    }
                                 </SelectGroup>
-                            ) :
+                            ) : name === 'Vehicle' ?
+                                <SelectGroup defaultValue={data ? data : ''}>
+                                    <SelectLabel>Vehicle</SelectLabel>
+                                    {
+                                        data?.map((vehiculo: Vehiculo) => {
+                                            return (
+                                                <SelectItem key={vehiculo.id} value={`${vehiculo.id}`}>{`${vehiculo.marca} ${vehiculo.modelo}`}</SelectItem>
+                                            )
+                                        })
+                                    }
+                                </SelectGroup>
+                                :
 
-                            (
-                                <SelectGroup defaultValue={data ? data : ''} onSelect={(e) => handleSelect(e.target.addEventListener.name)}>
-                                    <SelectLabel>Licencia</SelectLabel>
-                                    <SelectItem value="estandar">Estandar</SelectItem>
-                                    <SelectItem value="profesional">Profesional</SelectItem>
-                                </SelectGroup>
-                            )
+                                (
+                                    <SelectGroup defaultValue={data ? data : ''} onSelect={(e) => handleSelect(e.target.addEventListener.name)}>
+                                        <SelectLabel>Licencia</SelectLabel>
+                                        <SelectItem value="estandar">Estandar</SelectItem>
+                                        <SelectItem value="profesional">Profesional</SelectItem>
+                                    </SelectGroup>
+                                )
 
                     }
                 </SelectContent>

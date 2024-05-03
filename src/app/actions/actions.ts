@@ -117,13 +117,12 @@ export async function editVehicleAction(formData: FormData, id: any) {
 // TRIPS ACCIONS
 
 export async function createTripAction(formData: FormData) {
-  const vehicle = {
-    dominio: formData.get("Dominio"),
-    marca: formData.get("Marca"),
-    modelo: formData.get("Modelo"),
-    kilometraje: formData.get("Kilometraje"),
-    estado: formData.get("Estado") === "disponible" ? true : false,
-    anio: formData.get("Anio"),
+  const trip = {
+    fecha: formData.get("Date"),
+    kilometros: formData.get("Kilometres"),
+    precio_kilometro: formData.get("Price (x Kilometres)"),
+    id_empleado: formData.get("Driver"),
+    id_vehiculo: formData.get("Vehicle"),
   };
 
   await fetch(`${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/crear`, {
@@ -133,11 +132,11 @@ export async function createTripAction(formData: FormData) {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     },
-    body: JSON.stringify(vehicle),
+    body: JSON.stringify(trip),
   });
 
-  revalidatePath("/vehicles/createvehicle");
-  redirect("/vehicles");
+  revalidatePath("/trips/createtrip");
+  redirect("/trips");
 }
 
 export async function editTripAction(formData: FormData, id: any) {

@@ -1,10 +1,16 @@
 import CreateTrip from '@/app/components/forms/create/CreateTrip'
 import React from 'react'
+import { driverApi, vehicleApi } from '@/api'
 
-const page = () => {
+export default async function page() {
+
+    const [drivers, vehicles] = await Promise.all([
+        driverApi.list(),
+        vehicleApi.list()
+    ]);
+
     return (
-        <CreateTrip />
+        <CreateTrip driverList={drivers} vehiclesList={vehicles} />
     )
 }
 
-export default page

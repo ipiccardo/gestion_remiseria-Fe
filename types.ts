@@ -22,6 +22,7 @@ export interface Vehiculo {
   estado?: boolean;
   nombre?: string;
   apellido?: string;
+  id_empleado?: number;
 }
 
 export interface Licencia {
