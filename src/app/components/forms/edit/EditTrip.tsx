@@ -64,6 +64,9 @@ const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
     }, [formData.apellido])
 
 
+    console.log(formData, 'formulario')
+
+
 
     return (
         <>
@@ -73,8 +76,8 @@ const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
                 <EmployeeInput type='number' name='Kilometres' value={formData.kilometros_recorridos} onChange={(value: string) => handleInputChange('kilometros', value)} />
                 <EmployeeInput type='select' name='Driver' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='select' name='Vehicle' value={formData.modelo} onChange={(value: string) => handleInputChange('modelo', value)} />
-                <SelectInput name='Driver' data={availableDrivers} onChange={(value: string) => handleInputChange('apellido', value)} />
-                <SelectInput name='Vehicle' data={availableCars} onChange={(value: string) => handleInputChange('modelo', value)} />
+                <SelectInput name='Driver' data={availableDrivers} value={formData} onChange={(value: string) => handleInputChange('apellido', value)} />
+                <SelectInput name='Vehicle' data={availableCars} value={formData} onChange={(value: string) => handleInputChange('modelo', value)} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='flex justify-center items-center text-blue-700 w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>

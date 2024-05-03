@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select"
 import { driver, Vehiculo } from "../../../../types"
 
-export function SelectInput({ name, data, onChange }: any) {
+export function SelectInput({ name, data, onChange, value }: any) {
 
     const handleSelect = (e: any) => {
         if (onChange) {
@@ -21,6 +21,7 @@ export function SelectInput({ name, data, onChange }: any) {
             onChange(newValue);
         }
     }
+
 
     const [placeholder, setPlaceHolder] = useState('')
 
@@ -30,7 +31,13 @@ export function SelectInput({ name, data, onChange }: any) {
             setPlaceHolder(data ? 'Disponible' : 'Taller')
         } else if (name === 'Empleado') {
             setPlaceHolder(data ? data : '')
-        } else {
+        } else if (name === 'Driver') {
+            setPlaceHolder(value ? value.apellido + ' ' + value.nombre : '')
+        } else if (name === 'Vehicle') {
+            setPlaceHolder(value ? value.marca + ' ' + value.modelo : '')
+        }
+
+        else {
             setPlaceHolder(data ? data : `Select ${name}`)
         }
 

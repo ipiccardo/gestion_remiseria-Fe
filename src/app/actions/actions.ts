@@ -140,6 +140,8 @@ export async function createTripAction(formData: FormData) {
 }
 
 export async function editTripAction(formData: FormData, id: any) {
+  console.log(formData, "formdata");
+
   const trip = {
     fecha: formData.get("Date"),
     kilometros: formData.get("Kilometres"),
@@ -147,6 +149,8 @@ export async function editTripAction(formData: FormData, id: any) {
     id_empleado: formData.get("Driver"),
     id_vehiculo: formData.get("Vehicle"),
   };
+
+  console.log(trip, "trip");
 
   await fetch(
     `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/editar/${id}`,

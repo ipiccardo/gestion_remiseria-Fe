@@ -29,20 +29,22 @@ export async function CarsTable({ vehicle }: any) {
                     <TableHead className="text-white">Model</TableHead>
                     <TableHead className="text-white">Year</TableHead>
                     <TableHead className="text-white ">KMs</TableHead>
+                    <TableHead className="text-white ">Asignado</TableHead>
                     <TableHead className="text-white text-center">Is Available</TableHead>
                     <TableHead className="text-white text-center">Edit</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {vehicles?.map((vehiculo: Vehiculo) => {
-                    const { id, dominio, marca, modelo, kilometraje, disponible, idEmpleado, estado } = vehiculo;
+                    const { id, dominio, marca, modelo, kilometraje, disponible, idEmpleado, estado, apellido, nombre, anio } = vehiculo;
                     return (
                         <TableRow key={id}>
                             <TableCell>{dominio}</TableCell>
                             <TableCell>{marca}</TableCell>
                             <TableCell>{modelo}</TableCell>
-                            <TableCell>{new Date().getFullYear()}</TableCell>
+                            <TableCell>{anio}</TableCell>
                             <TableCell>{kilometraje}</TableCell>
+                            <TableCell>{apellido ? nombre + ' ' + apellido : 'No esta asignado'}</TableCell>
                             <TableCell>{estado ? <img className="flex justify-center m-auto" src='icons/checked.svg'></img> : <img className="flex justify-center m-auto" src='icons/rejected.svg'></img>}</TableCell>
                             <TableCell>
                                 <div className="flex cursor-pointer gap-3 justify-center">

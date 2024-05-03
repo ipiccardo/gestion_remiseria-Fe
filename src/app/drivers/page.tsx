@@ -16,7 +16,6 @@ export default async function Page({ searchParams }: {
     const driver = searchParams?.searchdriver || ''
 
     revalidatePath('/drivers')
-    // redirect("/drivers");
 
     return (
         <div className="w-full">
@@ -27,7 +26,6 @@ export default async function Page({ searchParams }: {
                 <InputDemo />
             </div>
             <div>
-                {/* <Suspense key={driver} fallback={<SkeletonCard />}> */}
                 <Suspense key={driver} fallback={<h1>LOADING....</h1>}>
                     <DriversTable driver={driver} />
                 </Suspense>
