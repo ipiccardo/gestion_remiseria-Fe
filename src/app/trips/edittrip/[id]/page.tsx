@@ -1,4 +1,4 @@
-import { tripsApi } from '@/api'
+import { driverApi, tripsApi, vehicleApi } from '@/api'
 import EditTrip from '@/app/components/forms/edit/EditTrip'
 import React from 'react'
 
@@ -6,10 +6,15 @@ export async function page({ params }: { params: { slug: string } }) {
 
     const id = params
 
-    const trip = await tripsApi.fetch(id)
+    const [drivers, vehicles, trip] = await Promise.all([
+        driverApi.list(),
+        vehicleApi.list(),
+        tripsApi.fetch(id)
+    ]);
+
 
     return (
-        <EditTrip trip={trip} />
+        <EditTrip trip={trip} driversList={drivers} vehiclesList={vehicles} />
     )
 }
 

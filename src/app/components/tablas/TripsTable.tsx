@@ -24,10 +24,7 @@ export async function TripsTable({ trip }: any) {
             <TableHeader className="bg-blue-800">
                 <TableRow >
                     <TableHead className=" text-white">Date</TableHead>
-                    {/* <TableHead className="text-white">Hour</TableHead>
-                    <TableHead className="text-white">Minutes</TableHead> */}
-                    <TableHead className="text-white">Kms</TableHead>
-                    <TableHead className="text-white ">KMs</TableHead>
+                    <TableHead className="text-white">Kilometros</TableHead>
                     <TableHead className="text-white">Name</TableHead>
                     <TableHead className="text-white">Surname</TableHead>
                     <TableHead className="text-white ">Plate</TableHead>
@@ -47,7 +44,6 @@ export async function TripsTable({ trip }: any) {
                     return (
                         <TableRow key={id}>
                             <TableCell className="font-medium">{correctDate}</TableCell>
-                            <TableCell>{kilometros}</TableCell>
                             <TableCell>{kilometros_recorridos}</TableCell>
                             <TableCell>{nombre}</TableCell>
                             <TableCell>{apellido}</TableCell>

@@ -27,8 +27,7 @@ export async function DriversTable({ driver }: any) {
                     <TableHead className="text-white">Surname</TableHead>
                     <TableHead className="text-white">DNI</TableHead>
                     <TableHead className="text-white">Licence</TableHead>
-                    <TableHead className="text-white ">KMs</TableHead>
-                    <TableHead className="text-white">Month</TableHead>
+                    <TableHead className="text-white">Last Salary</TableHead>
                     <TableHead className="text-white">Licence Type</TableHead>
                     <TableHead className="text-white ">Emision Date</TableHead>
                     <TableHead className="text-white  flex justify-center items-center">Is Available</TableHead>
@@ -50,8 +49,7 @@ export async function DriversTable({ driver }: any) {
                             <TableCell>{apellido}</TableCell>
                             <TableCell>{dni}</TableCell>
                             <TableCell>{licencia_vigente ? 'Available' : 'Expired'}</TableCell>
-                            <TableCell className="font-medium"></TableCell>
-                            <TableCell>{salario}</TableCell>
+                            <TableCell>{`${salario ? '$ ' + salario : '-'}`}</TableCell>
                             <TableCell>{tipo}</TableCell>
                             <TableCell className="">{fechaLicencia}</TableCell>
                             <TableCell className="flex justify-center">{licencia_vigente ? <img src='icons/checked.svg' /> : <img src='icons/rejected.svg' />}</TableCell>

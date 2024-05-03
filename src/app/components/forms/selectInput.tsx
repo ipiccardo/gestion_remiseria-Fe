@@ -36,7 +36,6 @@ export function SelectInput({ name, data, onChange }: any) {
 
     }, [name])
 
-    console.log(data, 'data')
 
     return (
         <div className="w-full">

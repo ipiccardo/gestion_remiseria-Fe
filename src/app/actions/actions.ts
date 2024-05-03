@@ -140,14 +140,12 @@ export async function createTripAction(formData: FormData) {
 }
 
 export async function editTripAction(formData: FormData, id: any) {
-  const vehicle = {
-    dominio: formData.get("Dominio"),
-    marca: formData.get("Marca"),
-    modelo: formData.get("Modelo"),
-    kilometraje: formData.get("Kilometraje"),
-    estado: formData.get("Estado") === "disponible" ? true : false,
-    anio: formData.get("Anio"),
-    id_empleado: formData.get("Empleado") ? formData.get("Empleado") : null,
+  const trip = {
+    fecha: formData.get("Date"),
+    kilometros: formData.get("Kilometres"),
+    precio_kilometro: formData.get("Price (x Kilometres)"),
+    id_empleado: formData.get("Driver"),
+    id_vehiculo: formData.get("Vehicle"),
   };
 
   await fetch(
@@ -159,10 +157,10 @@ export async function editTripAction(formData: FormData, id: any) {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(vehicle),
+      body: JSON.stringify(trip),
     }
   );
 
-  revalidatePath("/vehicles/editemployee");
-  redirect("/vehicles");
+  revalidatePath("/trips/edittrip");
+  redirect("/trips");
 }
