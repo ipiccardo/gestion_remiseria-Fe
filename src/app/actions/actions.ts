@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+// EMPLOYEE ACCIONS
+
 export async function createEmployeeAction(formData: FormData) {
   const driver = {
     nombre: formData.get("Nombre"),
@@ -56,4 +58,112 @@ export async function editEmployeeAction(formData: FormData, id: any) {
 
   revalidatePath("/drivers/editemployee");
   redirect("/drivers");
+}
+
+// VEHICLES ACCIONS
+
+export async function createVehicleAccion(formData: FormData) {
+  const vehicle = {
+    dominio: formData.get("Dominio"),
+    marca: formData.get("Marca"),
+    modelo: formData.get("Modelo"),
+    kilometraje: formData.get("Kilometraje"),
+    estado: formData.get("Estado") === "disponible" ? true : false,
+    anio: formData.get("Anio"),
+  };
+
+  await fetch(`${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/crear`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify(vehicle),
+  });
+
+  revalidatePath("/vehicles/createvehicle");
+  redirect("/vehicles");
+}
+
+export async function editVehicleAction(formData: FormData, id: any) {
+  const vehicle = {
+    dominio: formData.get("Dominio"),
+    marca: formData.get("Marca"),
+    modelo: formData.get("Modelo"),
+    kilometraje: formData.get("Kilometraje"),
+    estado: formData.get("Estado") === "disponible" ? true : false,
+    anio: formData.get("Anio"),
+    id_empleado: formData.get("Empleado") ? formData.get("Empleado") : null,
+  };
+
+  await fetch(
+    `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/editar/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(vehicle),
+    }
+  );
+
+  revalidatePath("/vehicles/editemployee");
+  redirect("/vehicles");
+}
+
+// TRIPS ACCIONS
+
+export async function createTripAction(formData: FormData) {
+  const vehicle = {
+    dominio: formData.get("Dominio"),
+    marca: formData.get("Marca"),
+    modelo: formData.get("Modelo"),
+    kilometraje: formData.get("Kilometraje"),
+    estado: formData.get("Estado") === "disponible" ? true : false,
+    anio: formData.get("Anio"),
+  };
+
+  await fetch(`${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/crear`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify(vehicle),
+  });
+
+  revalidatePath("/vehicles/createvehicle");
+  redirect("/vehicles");
+}
+
+export async function editTripAction(formData: FormData, id: any) {
+  const vehicle = {
+    dominio: formData.get("Dominio"),
+    marca: formData.get("Marca"),
+    modelo: formData.get("Modelo"),
+    kilometraje: formData.get("Kilometraje"),
+    estado: formData.get("Estado") === "disponible" ? true : false,
+    anio: formData.get("Anio"),
+    id_empleado: formData.get("Empleado") ? formData.get("Empleado") : null,
+  };
+
+  await fetch(
+    `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/editar/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(vehicle),
+    }
+  );
+
+  revalidatePath("/vehicles/editemployee");
+  redirect("/vehicles");
 }
