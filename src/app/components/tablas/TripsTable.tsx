@@ -8,7 +8,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-// import { trips } from '../../../../data.json'
 import Link from "next/link";
 import { Alert } from "../Alert";
 import { Trips } from '../../../../types'

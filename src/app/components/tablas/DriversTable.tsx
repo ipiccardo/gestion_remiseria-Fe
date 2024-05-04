@@ -8,7 +8,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { empleados, vehiculos, licencias, liquidaciones } from '../../../../data.json'
 import Link from "next/link"
 import { Alert } from "../Alert"
 import { driver } from "../../../../types"
