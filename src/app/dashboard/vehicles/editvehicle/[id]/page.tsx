@@ -2,7 +2,7 @@ import { driverApi, vehicleApi } from '@/api'
 import EditCar from '@/app/components/forms/edit/EditCar'
 import React from 'react'
 
-export async function page({ params }: { params: { slug: string } }) {
+export default async function page({ params }: { params: { slug: string } }) {
 
     const id = params
 
@@ -19,4 +19,3 @@ export async function page({ params }: { params: { slug: string } }) {
     )
 }
 
-export default page

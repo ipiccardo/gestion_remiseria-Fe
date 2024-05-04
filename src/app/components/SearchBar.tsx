@@ -28,7 +28,7 @@ export function InputDemo() {
             params.delete('searchtrip')
         }
 
-        replace(`${pathName}?${params.toString()}`)
+        replace(`${pathName}?${params?.toString()}`)
     })
 
 

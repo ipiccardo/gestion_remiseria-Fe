@@ -1,12 +1,11 @@
 import React from 'react'
 import EditEmployee from '../../../../components/forms/edit/EditEmployee'
 import { driverApi } from '@/api'
-import { revalidatePath } from 'next/cache'
 
 
-export async function page({ params }: { params: { slug: string } }) {
+export default async function page({ params }: { params: { id: string } }) {
 
-    const id = params
+    const id = params.id
 
     const driver = await driverApi.fetch(id)
 
@@ -15,4 +14,3 @@ export async function page({ params }: { params: { slug: string } }) {
     )
 }
 
-export default page

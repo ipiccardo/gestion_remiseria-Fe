@@ -6,7 +6,7 @@ import { PaginationDemo } from '../../components/Pagination'
 import { Suspense } from 'react'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { SkeletonCard } from '../../components/loaders/GeneralLoader'
+import SkeletonCard from '../../components/loaders/generalLoader'
 
 export default async function Page({ searchParams }: {
     searchParams?: {

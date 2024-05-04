@@ -19,7 +19,7 @@ export const driverApi = {
     const driver = await driverApi
       .list()
       .then((res) =>
-        res.find((empleado) => empleado.id.toString() === id.id.toString())
+        res.find((empleado) => empleado.id?.toString() === id?.toString())
       );
 
     if (!driver) {
@@ -61,7 +61,7 @@ export const vehicleApi = {
     const vehicle = await vehicleApi
       .list()
       .then((res) =>
-        res.find((vehicle) => vehicle.id.toString() === id.id.toString())
+        res.find((vehicle) => vehicle.id?.toString() === id.id?.toString())
       );
 
     if (!vehicle) {

@@ -27,7 +27,8 @@ export async function createEmployeeAction(formData: FormData) {
     body: JSON.stringify(driver),
   });
 
-  revalidatePath("/drivers/createemployee");
+  revalidatePath("/dashboard/drivers/createemployee");
+  revalidatePath("/drivers");
   redirect("/drivers");
 }
 
@@ -56,11 +57,11 @@ export async function editEmployeeAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath("/drivers/editemployee");
-  redirect("/drivers");
+  revalidatePath(`/dashboard/drivers/editemployee/`);
+  revalidatePath("/dashboard/drivers");
+  redirect("/dashboard/drivers");
 }
 export async function deleteEmployeeAction(id: any) {
-  console.log(id, "id");
   await fetch(
     `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/eliminar/${id}`,
     {
@@ -99,8 +100,9 @@ export async function createVehicleAccion(formData: FormData) {
     body: JSON.stringify(vehicle),
   });
 
-  revalidatePath("/vehicles/createvehicle");
-  redirect("/vehicles");
+  revalidatePath("/dashboard/vehicles/createvehicle");
+  revalidatePath("/dashboard/vehicles");
+  redirect("/dashboard/vehicles");
 }
 
 export async function editVehicleAction(formData: FormData, id: any) {
@@ -127,8 +129,9 @@ export async function editVehicleAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath("/vehicles/editemployee");
-  redirect("/vehicles");
+  revalidatePath("/dashboard/vehicles/editevehicle");
+  revalidatePath("/dashboard/vehicles");
+  redirect("/dashboard/vehicles");
 }
 
 // TRIPS ACCIONS
@@ -152,7 +155,8 @@ export async function createTripAction(formData: FormData) {
     body: JSON.stringify(trip),
   });
 
-  revalidatePath("/trips/createtrip");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/trips");
   redirect("/trips");
 }
 
@@ -178,6 +182,7 @@ export async function editTripAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath("/trips/edittrip");
-  redirect("/trips");
+  revalidatePath("/dashboard/trips/edittrip");
+  revalidatePath("/dashboard/trips");
+  redirect("/dashboard/trips");
 }

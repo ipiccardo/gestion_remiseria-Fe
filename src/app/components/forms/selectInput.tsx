@@ -31,7 +31,6 @@ export function SelectInput({ name, data, onChange, value }: any) {
         if (name === 'Estado') {
             setPlaceHolder(data ? 'Disponible' : 'Taller')
         } else if (name === 'Empleado') {
-            console.log(value, 'data')
             setPlaceHolder(data ? data : value ? value.apellido : '')
         } else if (name === 'Driver') {
             setPlaceHolder(value ? value.apellido + ' ' + value.nombre : '')
@@ -68,7 +67,7 @@ export function SelectInput({ name, data, onChange, value }: any) {
                                     {
                                         data?.map((empleado: driver) => {
                                             return (
-                                                <SelectItem key={empleado.id} value={empleado.id.toString()}>{`${empleado.apellido} ${empleado.nombre}`}</SelectItem>
+                                                <SelectItem key={empleado.id} value={empleado.id?.toString()}>{`${empleado.apellido} ${empleado.nombre}`}</SelectItem>
                                             )
                                         })
                                     }

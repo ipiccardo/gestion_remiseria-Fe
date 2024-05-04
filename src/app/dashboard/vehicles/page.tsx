@@ -3,7 +3,7 @@ import { CarsTable } from '../../components/tablas/CarsTable'
 import Button from '../../components/Button'
 import { InputDemo } from '../../components/SearchBar'
 import { PaginationDemo } from '../../components/Pagination'
-import { SkeletonCard } from '../../components/loaders/GeneralLoader'
+import SkeletonCard from '../../components/loaders/generalLoader'
 
 export default async function page({ searchParams }: {
     searchParams?: {

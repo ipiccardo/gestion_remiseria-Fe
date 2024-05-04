@@ -3,7 +3,7 @@ import { TripsTable } from '../../components/tablas/TripsTable'
 import { InputDemo } from '../../components/SearchBar'
 import Button from '../../components/Button'
 import { PaginationDemo } from '../../components/Pagination'
-import { SkeletonCard } from '../../components/loaders/GeneralLoader'
+import SkeletonCard from '../../components/loaders/generalLoader'
 
 export default async function page({ searchParams }: {
     searchParams?: {

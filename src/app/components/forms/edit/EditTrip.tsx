@@ -64,7 +64,6 @@ const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
     }, [formData.apellido])
 
 
-    console.log(formData, 'formulario')
 
 
 
