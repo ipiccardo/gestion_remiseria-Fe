@@ -61,7 +61,7 @@ export async function DriversTable({ driver }: any) {
                                     </svg>
                                 </Link>
                                 <div className={`flex justify-center`}>
-                                    <Alert id={nombre} type='conductor' />
+                                    <Alert id={id} type='conductor' />
                                 </div>
 
                             </div></TableCell>

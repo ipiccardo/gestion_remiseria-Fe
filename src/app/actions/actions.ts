@@ -59,6 +59,23 @@ export async function editEmployeeAction(formData: FormData, id: any) {
   revalidatePath("/drivers/editemployee");
   redirect("/drivers");
 }
+export async function deleteEmployeeAction(id: any) {
+  console.log(id, "id");
+  await fetch(
+    `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/eliminar/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(id),
+    }
+  );
+
+  redirect("/drivers");
+}
 
 // VEHICLES ACCIONS
 
