@@ -1,5 +1,5 @@
 import React from 'react'
-import EditEmployee from '../../../components/forms/edit/EditEmployee'
+import EditEmployee from '../../../../components/forms/edit/EditEmployee'
 import { driverApi } from '@/api'
 import { revalidatePath } from 'next/cache'
 

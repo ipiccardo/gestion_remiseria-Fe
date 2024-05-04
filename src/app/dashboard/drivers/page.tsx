@@ -1,11 +1,12 @@
 import React from 'react'
-import Button from '../components/Button'
-import { InputDemo } from '../components/SearchBar'
-import { DriversTable } from '../components/tablas/DriversTable'
-import { PaginationDemo } from '../components/Pagination'
+import Button from '../../components/Button'
+import { InputDemo } from '../../components/SearchBar'
+import { DriversTable } from '../../components/tablas/DriversTable'
+import { PaginationDemo } from '../../components/Pagination'
 import { Suspense } from 'react'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import { SkeletonCard } from '../../components/loaders/GeneralLoader'
 
 export default async function Page({ searchParams }: {
     searchParams?: {
@@ -26,7 +27,7 @@ export default async function Page({ searchParams }: {
                 <InputDemo />
             </div>
             <div>
-                <Suspense key={driver} fallback={<h1>LOADING....</h1>}>
+                <Suspense key={driver} fallback={<SkeletonCard />}>
                     <DriversTable driver={driver} />
                 </Suspense>
                 {/* <PaginationDemo /> */}

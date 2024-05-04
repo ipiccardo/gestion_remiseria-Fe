@@ -9,14 +9,14 @@ const NavLinks = () => {
 
     const links = [{
         name: 'Drivers',
-        href: '/drivers',
+        href: '/dashboard/drivers',
     }, {
         name: 'Vehicles',
-        href: '/vehicles',
+        href: '/dashboard/vehicles',
     },
     {
         name: 'Trips',
-        href: '/trips',
+        href: '/dashboard/trips',
     }]
 
     return (

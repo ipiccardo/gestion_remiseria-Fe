@@ -11,7 +11,7 @@ import { createTripAction } from '@/app/actions/actions';
 const NewTripForm = ({ driverList, vehiclesList }: any) => {
     const router = useRouter();
     const pathName = usePathname()
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const [formData, setFormData] = useState<Trips>({
         id: 0,
         fecha: '',

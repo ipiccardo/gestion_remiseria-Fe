@@ -15,7 +15,7 @@ import { editEmployeeAction } from '@/app/actions/actions';
 const EditEmployeeForm = ({ driver }: { driver: driver }) => {
     const router = useRouter();
     const pathName = usePathname()
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const formatedDate = driver.fecha_emision.split('T')
     const correctDate = formatedDate[0]
     const [formData, setFormData] = useState<driver>({

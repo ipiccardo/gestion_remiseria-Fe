@@ -12,7 +12,7 @@ import { createVehicleAccion } from '@/app/actions/actions';
 const NewCarForm = () => {
     const router = useRouter();
     const pathName = usePathname()
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const [formData, setFormData] = useState<Vehiculo>({
         id: 0,
         dominio: '',

@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateEmployee from '../../components/forms/create/CreateEmployee'
+import CreateEmployee from '../../../components/forms/create/CreateEmployee'
 
 const page = () => {
 

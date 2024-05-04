@@ -13,7 +13,7 @@ import { createEmployeeAction } from '../../../actions/actions';
 const NewEmployeeForm = () => {
     const router = useRouter();
     const pathName = usePathname()
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const [formData, setFormData] = useState<driver>({
         id: 0,
         nombre: '',

@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react'
-import { CarsTable } from '../components/tablas/CarsTable'
-import Button from '../components/Button'
-import { InputDemo } from '../components/SearchBar'
-import { PaginationDemo } from '../components/Pagination'
+import { CarsTable } from '../../components/tablas/CarsTable'
+import Button from '../../components/Button'
+import { InputDemo } from '../../components/SearchBar'
+import { PaginationDemo } from '../../components/Pagination'
+import { SkeletonCard } from '../../components/loaders/GeneralLoader'
 
 export default async function page({ searchParams }: {
     searchParams?: {
@@ -22,7 +23,7 @@ export default async function page({ searchParams }: {
             </div>
             {/* <div className="max-w-5xl w-full"> */}
             <div>
-                <Suspense key={vehicle} fallback={<h1>LOADING....</h1>}>
+                <Suspense key={vehicle} fallback={<SkeletonCard />}>
                     <CarsTable vehicle={vehicle} />
                 </Suspense>
                 {/* <PaginationDemo /> */}

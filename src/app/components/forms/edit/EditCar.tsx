@@ -11,7 +11,7 @@ import { createVehicleAccion, editVehicleAction } from '@/app/actions/actions';
 const EditForm = ({ vehicle, driversList }: any) => {
     const router = useRouter();
     const pathName = usePathname()
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const [formData, setFormData] = useState<Vehiculo>({
         id: vehicle.id,
         dominio: vehicle.dominio,

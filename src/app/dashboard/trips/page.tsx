@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react'
-import { TripsTable } from '../components/tablas/TripsTable'
-import { InputDemo } from '../components/SearchBar'
-import Button from '../components/Button'
-import { PaginationDemo } from '../components/Pagination'
+import { TripsTable } from '../../components/tablas/TripsTable'
+import { InputDemo } from '../../components/SearchBar'
+import Button from '../../components/Button'
+import { PaginationDemo } from '../../components/Pagination'
+import { SkeletonCard } from '../../components/loaders/GeneralLoader'
 
 export default async function page({ searchParams }: {
     searchParams?: {
@@ -23,7 +24,7 @@ export default async function page({ searchParams }: {
             </div>
             {/* <div className="max-w-5xl w-full"> */}
             <div>
-                <Suspense key={trip} fallback={<h1>LOADING....</h1>}>
+                <Suspense key={trip} fallback={<SkeletonCard />}>
                     <TripsTable trip={trip} />
                 </Suspense>
                 {/* <PaginationDemo /> */}

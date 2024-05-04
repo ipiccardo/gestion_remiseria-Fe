@@ -11,7 +11,7 @@ import { editTripAction } from '@/app/actions/actions';
 const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
     const router = useRouter();
     const pathName = usePathname()
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const formatDate = trip.fecha.split('T')
     const correctDate = formatDate[0]
     const [formData, setFormData] = useState<Trips>({ ...trip, fecha: correctDate });
