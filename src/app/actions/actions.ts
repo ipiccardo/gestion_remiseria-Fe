@@ -37,8 +37,8 @@ export async function editEmployeeAction(formData: FormData, id: any) {
     apellido: formData.get("Apellido"),
     dni: formData.get("DNI"),
     licencia: {
-      id_licencia: formData.get("tipo") === "estandar" ? 1 : 2,
-      duracion: formData.get("tipo") === "estandar" ? 5 : 1,
+      id_licencia: formData.get("tipo") === "estandar" ? 2 : 1,
+      duracion: formData.get("tipo") === "estandar" ? 1 : 5,
     },
     fecha_emision: formData.get("Fecha Emision"),
   };
@@ -140,8 +140,6 @@ export async function createTripAction(formData: FormData) {
 }
 
 export async function editTripAction(formData: FormData, id: any) {
-  console.log(formData, "formdata");
-
   const trip = {
     fecha: formData.get("Date"),
     kilometros: formData.get("Kilometres"),
@@ -149,8 +147,6 @@ export async function editTripAction(formData: FormData, id: any) {
     id_empleado: formData.get("Driver"),
     id_vehiculo: formData.get("Vehicle"),
   };
-
-  console.log(trip, "trip");
 
   await fetch(
     `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/editar/${id}`,

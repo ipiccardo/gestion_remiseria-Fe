@@ -10,8 +10,6 @@ export async function page({ params }: { params: { slug: string } }) {
 
     const driver = await driverApi.fetch(id)
 
-    revalidatePath('drivers')
-
     return (
         <EditEmployee driver={driver} />
     )

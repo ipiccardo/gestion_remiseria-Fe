@@ -25,7 +25,7 @@ export default async function page({ searchParams }: {
                 <Suspense key={vehicle} fallback={<h1>LOADING....</h1>}>
                     <CarsTable vehicle={vehicle} />
                 </Suspense>
-                <PaginationDemo />
+                {/* <PaginationDemo /> */}
             </div>
         </div>
     )

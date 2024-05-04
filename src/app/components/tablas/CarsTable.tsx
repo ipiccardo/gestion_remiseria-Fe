@@ -8,7 +8,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { vehiculos } from '../../../../data.json'
 import { Vehiculo } from "../../../../types"
 import Link from "next/link";
 import { Alert } from "../Alert";
@@ -21,7 +20,7 @@ export async function CarsTable({ vehicle }: any) {
 
     return (
         <Table>
-            <TableCaption>A list of your recent invoices.</TableCaption>
+            <TableCaption>A list of your vehicles.</TableCaption>
             <TableHeader className="bg-blue-800">
                 <TableRow >
                     <TableHead className=" text-white">Plate</TableHead>

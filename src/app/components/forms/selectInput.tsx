@@ -25,12 +25,14 @@ export function SelectInput({ name, data, onChange, value }: any) {
 
     const [placeholder, setPlaceHolder] = useState('')
 
+
     useEffect(() => {
 
         if (name === 'Estado') {
             setPlaceHolder(data ? 'Disponible' : 'Taller')
         } else if (name === 'Empleado') {
-            setPlaceHolder(data ? data : '')
+            console.log(value, 'data')
+            setPlaceHolder(data ? data : value ? value.apellido : '')
         } else if (name === 'Driver') {
             setPlaceHolder(value ? value.apellido + ' ' + value.nombre : '')
         } else if (name === 'Vehicle') {

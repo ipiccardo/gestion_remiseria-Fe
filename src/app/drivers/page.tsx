@@ -29,7 +29,7 @@ export default async function Page({ searchParams }: {
                 <Suspense key={driver} fallback={<h1>LOADING....</h1>}>
                     <DriversTable driver={driver} />
                 </Suspense>
-                <PaginationDemo />
+                {/* <PaginationDemo /> */}
             </div>
         </div>
     )

@@ -23,6 +23,7 @@ const CustomInput: React.FC<CustomFormInputProps> = ({
         }
     };
 
+
     return (
         <div className={`${name === 'tipo' || type === 'select' && 'hidden'} flex flex-col gap-2 w-full`}>
             <label className='text-gray-800'>{name}</label>

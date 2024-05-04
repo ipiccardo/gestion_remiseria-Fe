@@ -70,6 +70,7 @@ const EditForm = ({ vehicle, driversList }: any) => {
 
 
 
+
     return (
         <>
 
@@ -82,7 +83,7 @@ const EditForm = ({ vehicle, driversList }: any) => {
                 <EmployeeInput type='select' name='Empleado' value={formData.idEmpleado} onChange={(value: string) => handleInputChange('idEmpleado', value)} />
                 <EmployeeInput type='text' name='Kilometraje' value={formData.kilometraje} onChange={(value: string) => handleInputChange('kilometraje', value)} />
                 <SelectInput name='Estado' data={formData.estado} onChange={(value: string) => handleInputChange('estado', value)} />
-                <SelectInput name='Empleado' data={availableDrivers} onChange={(value: string) => handleInputChange('idEmpleado', value)} />
+                <SelectInput name='Empleado' data={availableDrivers} value={formData} onChange={(value: string) => handleInputChange('idEmpleado', value)} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>

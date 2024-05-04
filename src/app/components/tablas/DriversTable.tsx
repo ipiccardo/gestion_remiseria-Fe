@@ -20,7 +20,7 @@ export async function DriversTable({ driver }: any) {
 
     return (
         <Table>
-            <TableCaption>A list of your recent invoices.</TableCaption>
+            <TableCaption>A list of your drivers.</TableCaption>
             <TableHeader className="bg-blue-800">
                 <TableRow >
                     <TableHead className=" text-white">Name</TableHead>

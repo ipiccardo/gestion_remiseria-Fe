@@ -68,8 +68,10 @@ const EditEmployeeForm = ({ driver }: { driver: driver }) => {
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='text' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
                 <EmployeeInput type='text' name='Fecha Emision' value={formData.fecha_emision} onChange={(value: string) => handleInputChange('fecha_emision', value)} />
-                <SelectInput name='Tipo' data={formData.tipo} />
-                <EmployeeInput type='text' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
+                <div className='hidden'>
+                    <EmployeeInput type='select' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
+                </div>
+                <SelectInput name='Tipo' data={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
                     <Link href={`/${sendBack}`} className='text-blue-700 flex justify-center items-center w-32 border-blue-700 border-2 rounded p-3 hover:border-blue-900 hover:text-blue-900 '>Cancelar</Link>

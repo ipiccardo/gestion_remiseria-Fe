@@ -20,7 +20,7 @@ export async function TripsTable({ trip }: any) {
 
     return (
         <Table>
-            <TableCaption>A list of your recent invoices.</TableCaption>
+            <TableCaption>A list of your trips.</TableCaption>
             <TableHeader className="bg-blue-800">
                 <TableRow >
                     <TableHead className=" text-white">Date</TableHead>

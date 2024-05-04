@@ -26,7 +26,7 @@ export default async function page({ searchParams }: {
                 <Suspense key={trip} fallback={<h1>LOADING....</h1>}>
                     <TripsTable trip={trip} />
                 </Suspense>
-                <PaginationDemo />
+                {/* <PaginationDemo /> */}
             </div>
         </div>
     )
