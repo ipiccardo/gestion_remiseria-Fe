@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default async function Home() {
   return (
-    <div className="">
+    <div className="font-sans">
 
       <Image
         src="/images/portada.jpg"
