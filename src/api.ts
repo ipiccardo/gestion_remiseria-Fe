@@ -5,8 +5,8 @@ const drivers: driver[] = [];
 export const driverApi = {
   list: async (): Promise<driver[]> => {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/`
-      // { next: { tags: ["drivers"] } }
+      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/`,
+      { next: { tags: ["drivers"] } }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -16,11 +16,9 @@ export const driverApi = {
     return data;
   },
   fetch: async (id: any): Promise<any> => {
-    const driver = await driverApi
-      .list()
-      .then((res) =>
-        res.find((empleado) => empleado.id?.toString() === id?.toString())
-      );
+    const driver = await driverApi.list().then((res) => {
+      return res.find((empleado) => empleado.id?.toString() === id?.toString());
+    });
 
     if (!driver) {
       throw new Error(`Driver with id ${id} not found`);
@@ -48,7 +46,8 @@ export const driverApi = {
 export const vehicleApi = {
   list: async (): Promise<Vehiculo[]> => {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/`
+      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/`,
+      { next: { tags: ["vehicles"] } }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -90,7 +89,8 @@ export const vehicleApi = {
 export const tripsApi = {
   list: async (): Promise<Trips[]> => {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/`
+      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/`,
+      { next: { tags: ["trips"] } }
     )
       .then((res) => res.json())
       .then((data) => {

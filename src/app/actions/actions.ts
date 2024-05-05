@@ -11,8 +11,8 @@ export async function createEmployeeAction(formData: FormData) {
     apellido: formData.get("Apellido"),
     dni: formData.get("DNI"),
     licencia: {
-      id_licencia: formData.get("tipo") === "estandar" ? 1 : 2,
-      duracion: formData.get("tipo") === "estandar" ? 5 : 1,
+      id_licencia: formData.get("tipo") === "estandar" ? 2 : 1,
+      duracion: formData.get("tipo") === "estandar" ? 1 : 5,
     },
     fecha_emision: formData.get("Fecha Emision"),
   };
@@ -57,7 +57,7 @@ export async function editEmployeeAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath(`/dashboard/drivers/editemployee/`);
+  revalidatePath(`/dashboard/drivers/editemployee/${id}`);
   revalidatePath("/dashboard/drivers");
   redirect("/dashboard/drivers");
 }
@@ -75,6 +75,8 @@ export async function deleteEmployeeAction(id: any) {
   );
 
   revalidatePath("/dashboard/drivers");
+  revalidatePath("/dashboard/vehicles");
+  revalidatePath("/dashboard/trips");
   redirect("/dashboard/drivers");
 }
 

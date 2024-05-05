@@ -60,7 +60,9 @@ const NewEmployeeForm = () => {
                 <EmployeeInput type='text' name='Apellido' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <EmployeeInput type='number' name='DNI' value={formData.dni} onChange={(value: string) => handleInputChange('dni', value)} />
                 <SelectInput type='select' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
-                <EmployeeInput type='text' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
+                <div className='hidden'>
+                    <EmployeeInput type='select' name='tipo' value={formData.tipo} onChange={(value: string) => handleInputChange('tipo', value)} />
+                </div>
                 <EmployeeInput type='date' name='Fecha Emision' value={formData.fecha_emision} onChange={(value: string) => handleInputChange('fecha_emision', value)} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}
                 <div className='flex gap-2 pb-8 pt-4 justify-end w-full'>
