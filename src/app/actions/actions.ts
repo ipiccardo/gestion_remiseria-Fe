@@ -111,7 +111,10 @@ export async function editVehicleAction(formData: FormData, id: any) {
     marca: formData.get("Marca"),
     modelo: formData.get("Modelo"),
     kilometraje: formData.get("Kilometraje"),
-    estado: formData.get("Estado") === "disponible" ? true : false,
+    estado:
+      formData.get("Estado") === "taller" || !formData.get("Estado")
+        ? false
+        : true,
     anio: formData.get("Anio"),
     id_empleado: formData.get("Empleado") ? formData.get("Empleado") : null,
   };
