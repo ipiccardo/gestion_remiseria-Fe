@@ -20,13 +20,14 @@ const NewEmployeeForm = () => {
         apellido: '',
         dni: 0,
         tipo: '',
-        fecha_emision: '2024-01-10',
+        fecha_emision: '',
     });
     const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
         nombre: false,
         apellido: false,
         dni: false,
         tipo: false,
+        fecha_emision: false,
     });
     const [showAlert, setShowAlert] = useState(false);
     const [formSubmitted, setFormSubmitted] = useState(false)
