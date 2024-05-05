@@ -16,7 +16,6 @@ export default async function Page({ searchParams }: {
 
     const driver = searchParams?.searchdriver || ''
 
-    revalidatePath('/drivers')
 
     return (
         <div className="w-full">

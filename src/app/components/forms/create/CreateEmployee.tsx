@@ -27,7 +27,6 @@ const NewEmployeeForm = () => {
         apellido: false,
         dni: false,
         tipo: false,
-        fecha_emision: false,
     });
     const [showAlert, setShowAlert] = useState(false);
     const [formSubmitted, setFormSubmitted] = useState(false)

@@ -5,8 +5,7 @@ const drivers: driver[] = [];
 export const driverApi = {
   list: async (): Promise<driver[]> => {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/`,
-      { next: { tags: ["drivers"] } }
+      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/empleados/`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -46,8 +45,7 @@ export const driverApi = {
 export const vehicleApi = {
   list: async (): Promise<Vehiculo[]> => {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/`,
-      { next: { tags: ["vehicles"] } }
+      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -89,8 +87,7 @@ export const vehicleApi = {
 export const tripsApi = {
   list: async (): Promise<Trips[]> => {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/`,
-      { next: { tags: ["trips"] } }
+      `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/`
     )
       .then((res) => res.json())
       .then((data) => {

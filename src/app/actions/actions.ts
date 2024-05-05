@@ -57,7 +57,7 @@ export async function editEmployeeAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath(`/dashboard/drivers/editemployee/${id}`);
+  revalidatePath(`/dashboard/drivers/editemployee`);
   revalidatePath("/dashboard/drivers");
   redirect("/dashboard/drivers");
 }
