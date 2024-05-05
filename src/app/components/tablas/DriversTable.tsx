@@ -18,7 +18,7 @@ export async function DriversTable({ driver }: any) {
     const drivers = await driverApi.search(driver)
 
 
-    if (!drivers.length) {
+    if (!drivers?.length) {
         return <h1>No se encontraron conductores</h1>
     }
 

@@ -18,7 +18,7 @@ export async function CarsTable({ vehicle }: any) {
 
     const vehicles = await vehicleApi.search(vehicle)
 
-    if (!vehicles.length) {
+    if (!vehicles?.length) {
         return <h1>No se encontraron vehiculos</h1>
     }
 
