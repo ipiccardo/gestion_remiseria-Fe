@@ -63,10 +63,6 @@ const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
         }))
     }, [formData.apellido])
 
-
-
-
-
     return (
         <>
             <form action={(formData) => editTripAction(formData, trip.id)} className='flex flex-col items-center gap-4 max-w-80  mx-auto w-full ml-0 lg:max-w-3xl border-2 p-8  border-solid shadow-lg shadow-blue-900/50 rounded'>

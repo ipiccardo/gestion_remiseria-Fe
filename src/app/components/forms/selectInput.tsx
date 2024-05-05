@@ -25,12 +25,11 @@ export function SelectInput({ name, data, onChange, value }: any) {
 
     const [placeholder, setPlaceHolder] = useState('')
     const [driver, setDriver] = useState<any>()
-    const [state, setState] = useState()
 
 
     useEffect(() => {
 
-        if (data?.length && name !== 'Estado') {
+        if (data?.length && name !== 'Estado' && name !== 'Tipo') {
             setDriver(data !== undefined && data?.find((element: any) => {
                 return element.id?.toString() === value?.idEmpleado?.toString()
             }))
@@ -47,14 +46,15 @@ export function SelectInput({ name, data, onChange, value }: any) {
         } else if (name === 'Driver') {
             setPlaceHolder(value ? value.apellido + ' ' + value.nombre : '')
         } else if (name === 'Vehicle') {
-            setPlaceHolder(value ? value.marca + ' ' + value.modelo : '')
+            setPlaceHolder(data?.length ? data[0].marca + ' ' + data[0].modelo : '')
         }
 
         else {
             setPlaceHolder(data ? data : `Select ${name}`)
         }
 
-    }, [name, driver])
+    }, [name, driver, data, value])
+
 
 
     return (
@@ -85,7 +85,7 @@ export function SelectInput({ name, data, onChange, value }: any) {
                                     }
                                 </SelectGroup>
                             ) : name === 'Vehicle' ?
-                                <SelectGroup defaultValue={data ? data : ''}>
+                                <SelectGroup defaultValue={data?.length ? data[0].marca + ' ' + data[0].modelo : ''}>
                                     <SelectLabel>Vehicle</SelectLabel>
                                     {
                                         data?.map((vehiculo: Vehiculo) => {
