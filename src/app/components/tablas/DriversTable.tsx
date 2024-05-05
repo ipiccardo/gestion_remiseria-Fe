@@ -17,6 +17,11 @@ export async function DriversTable({ driver }: any) {
 
     const drivers = await driverApi.search(driver)
 
+
+    if (!drivers.length) {
+        return <h1>No se encontraron conductores</h1>
+    }
+
     return (
         <Table>
             <TableCaption>A list of your drivers.</TableCaption>
@@ -34,6 +39,7 @@ export async function DriversTable({ driver }: any) {
                 </TableRow>
             </TableHeader>
             <TableBody>
+
                 {drivers.map((empleado: driver) => {
 
                     const { id, nombre, apellido, dni, tipo, licencia_vigente, fecha_emision, salario, ult_periodo } = empleado

@@ -29,7 +29,6 @@ export default async function Page({ searchParams }: {
                 <Suspense key={driver} fallback={<SkeletonCard />}>
                     <DriversTable driver={driver} />
                 </Suspense>
-                {/* <PaginationDemo /> */}
             </div>
         </div>
     )

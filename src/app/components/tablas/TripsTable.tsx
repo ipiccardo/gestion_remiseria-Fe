@@ -17,6 +17,11 @@ export async function TripsTable({ trip }: any) {
 
     const trips = await tripsApi.search(trip)
 
+
+    if (!trips.length) {
+        return <h1>No se encontraron viajes</h1>
+    }
+
     return (
         <Table>
             <TableCaption>A list of your trips.</TableCaption>
