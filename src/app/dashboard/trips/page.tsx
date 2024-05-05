@@ -22,12 +22,10 @@ export default async function page({ searchParams }: {
             <div className="w-52 md:w-80 mb-8">
                 <InputDemo />
             </div>
-            {/* <div className="max-w-5xl w-full"> */}
             <div>
                 <Suspense key={trip} fallback={<SkeletonCard />}>
                     <TripsTable trip={trip} />
                 </Suspense>
-                {/* <PaginationDemo /> */}
             </div>
         </div>
     )
