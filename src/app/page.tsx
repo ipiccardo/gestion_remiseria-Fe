@@ -5,11 +5,8 @@ export default async function Home() {
   return (
     <div className="font-sans">
 
-      <Image
-        src="/images/portada.jpg"
-        alt="portada"
-        fill
-      />
+      <div className="bg-[url('/images/portada.jpg')] h-screen w-screen absolute top-0 left-0 right-0 bottom-0 bg-no-repeat bg-cover">
+      </div>
 
       <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 text-white p-8 z-40">
         <h1 className="text-4xl md:text-6xl font-bold text-center mb-8">Welcome to our car service</h1>
