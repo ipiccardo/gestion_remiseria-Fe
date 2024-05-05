@@ -24,6 +24,18 @@ export function SelectInput({ name, data, onChange, value }: any) {
 
 
     const [placeholder, setPlaceHolder] = useState('')
+    const [driver, setDriver] = useState<any>()
+    const [state, setState] = useState()
+
+
+    useEffect(() => {
+
+        if (data?.length && name !== 'Estado') {
+            setDriver(data !== undefined && data?.find((element: any) => {
+                return element.id?.toString() === value?.idEmpleado?.toString()
+            }))
+        }
+    }, [data, name])
 
 
     useEffect(() => {
@@ -31,7 +43,7 @@ export function SelectInput({ name, data, onChange, value }: any) {
         if (name === 'Estado') {
             setPlaceHolder(data ? 'Disponible' : 'Taller')
         } else if (name === 'Empleado') {
-            setPlaceHolder(data ? data : value ? value.apellido : '')
+            setPlaceHolder(driver ? driver?.apellido + ' ' + driver?.nombre : '')
         } else if (name === 'Driver') {
             setPlaceHolder(value ? value.apellido + ' ' + value.nombre : '')
         } else if (name === 'Vehicle') {
@@ -42,7 +54,7 @@ export function SelectInput({ name, data, onChange, value }: any) {
             setPlaceHolder(data ? data : `Select ${name}`)
         }
 
-    }, [name])
+    }, [name, driver])
 
 
     return (
@@ -62,12 +74,12 @@ export function SelectInput({ name, data, onChange, value }: any) {
                             </SelectGroup>
                         ) : name === 'Driver' || name === 'Empleado' ?
                             (
-                                <SelectGroup defaultValue={data ? data : ''}>
+                                <SelectGroup defaultValue={driver ? driver?.apellido + ' ' + driver?.nombre : ''}>
                                     <SelectLabel>Empleado</SelectLabel>
                                     {
                                         data?.map((empleado: driver) => {
                                             return (
-                                                <SelectItem key={empleado.id} value={empleado.id?.toString()}>{`${empleado.apellido} ${empleado.nombre}`}</SelectItem>
+                                                <SelectItem key={empleado.id} value={empleado.id === driver?.id ? driver?.id.toString() : empleado.id?.toString()}>{`${empleado.apellido} ${empleado.nombre}`}</SelectItem>
                                             )
                                         })
                                     }

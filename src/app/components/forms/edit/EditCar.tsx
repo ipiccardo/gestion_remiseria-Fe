@@ -19,7 +19,7 @@ const EditForm = ({ vehicle, driversList }: any) => {
         modelo: vehicle.modelo,
         kilometraje: vehicle.kilometraje,
         disponible: vehicle.disponible,
-        idEmpleado: vehicle.idEmpleado,
+        idEmpleado: vehicle.id_empleado,
         anio: vehicle.anio,
         estado: vehicle.estado,
         apellido: vehicle.apellido
@@ -38,6 +38,8 @@ const EditForm = ({ vehicle, driversList }: any) => {
     });
     const [showAlert, setShowAlert] = useState(false);
     const [availableDrivers, setAvailaBleDrivers] = useState<driver>()
+    const [chosenVehicle, setChosenVehicle] = useState()
+    const [chosenDriver, setChosenDriver] = useState()
 
     const handleInputChange = (fieldName: keyof Vehiculo, value: string) => {
         setFormData(prevData => ({
@@ -67,9 +69,6 @@ const EditForm = ({ vehicle, driversList }: any) => {
             return empleado.licencia_vigente
         }))
     }, [driversList])
-
-
-
 
     return (
         <>
