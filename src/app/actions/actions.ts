@@ -28,8 +28,8 @@ export async function createEmployeeAction(formData: FormData) {
   });
 
   revalidatePath("/dashboard/drivers/createemployee");
-  revalidatePath("/drivers");
-  redirect("/drivers");
+  revalidatePath("/dashboard/drivers");
+  redirect("/dashboard/drivers");
 }
 
 export async function editEmployeeAction(formData: FormData, id: any) {
@@ -71,11 +71,11 @@ export async function deleteEmployeeAction(id: any) {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(id),
     }
   );
 
-  redirect("/drivers");
+  revalidatePath("/dashboard/drivers");
+  redirect("/dashboard/drivers");
 }
 
 // VEHICLES ACCIONS
@@ -133,6 +133,22 @@ export async function editVehicleAction(formData: FormData, id: any) {
   revalidatePath("/dashboard/vehicles");
   redirect("/dashboard/vehicles");
 }
+export async function deleteVehicleAction(id: any) {
+  await fetch(
+    `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/vehiculos/eliminar/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
+  );
+
+  revalidatePath("/dashboard/vehicles");
+  redirect("/dashboard/vehicles");
+}
 
 // TRIPS ACCIONS
 
@@ -156,8 +172,8 @@ export async function createTripAction(formData: FormData) {
   });
 
   revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/trips");
-  redirect("/trips");
+  revalidatePath("/dashboard/trips");
+  redirect("/dashboard/trips");
 }
 
 export async function editTripAction(formData: FormData, id: any) {
@@ -183,6 +199,23 @@ export async function editTripAction(formData: FormData, id: any) {
   );
 
   revalidatePath("/dashboard/trips/edittrip");
+  revalidatePath("/dashboard/trips");
+  redirect("/dashboard/trips");
+}
+
+export async function deleteTripAction(id: any) {
+  await fetch(
+    `${process.env.NEXT_PUBLIC_BACK_END_PORT}/api/viajes/eliminar/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
+  );
+
   revalidatePath("/dashboard/trips");
   redirect("/dashboard/trips");
 }

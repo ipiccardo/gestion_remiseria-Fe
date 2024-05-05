@@ -33,7 +33,7 @@ const NewTripForm = ({ driverList, vehiclesList }: any) => {
     const [showAlert, setShowAlert] = useState(false);
 
     const [availableDrivers, setAvailaBleDrivers] = useState<driver>()
-    const [availableCars, setAvailableCars] = useState<Vehiculo>()
+    const [availableCars, setAvailableCars] = useState<Vehiculo | any>()
 
     const handleInputChange = (fieldName: keyof Trips, value: string) => {
 
@@ -65,10 +65,9 @@ const NewTripForm = ({ driverList, vehiclesList }: any) => {
 
     useEffect(() => {
         setAvailableCars(() => vehiclesList.filter((vehiculo: Vehiculo) => {
-            return vehiculo.id_empleado === parseInt(formData.apellido)
+            return vehiculo.estado && vehiculo.id_empleado === parseInt(formData.apellido)
         }))
     }, [formData.apellido])
-
 
 
     return (
@@ -78,7 +77,7 @@ const NewTripForm = ({ driverList, vehiclesList }: any) => {
                 <EmployeeInput type='number' name='Price (x Kilometres)' value={formData.precio_kilometro} onChange={(value: string) => handleInputChange('precio_kilometro', value)} />
                 <EmployeeInput type='number' name='Kilometres' value={formData.kilometros} onChange={(value: string) => handleInputChange('kilometros', value)} />
                 <EmployeeInput type='select' name='Driver' value={formData.apellido} onChange={(value: string) => handleInputChange('apellido', value)} />
-                <EmployeeInput type='select' name='Vehicle' value={formData.modelo} onChange={(value: string) => handleInputChange('modelo', value)} />
+                <EmployeeInput type='select' name='Vehicle' value={formData.modelo !== '' ? formData.modelo : availableCars?.length && availableCars[0].id} onChange={(value: string) => handleInputChange('modelo', value)} />
                 <SelectInput name='Driver' data={availableDrivers} onChange={(value: string) => handleInputChange('apellido', value)} />
                 <SelectInput name='Vehicle' data={availableCars} onChange={(value: string) => handleInputChange('modelo', value)} />
                 {showAlert && <p className="text-red-500">Por favor complete todos los campos obligatorios.</p>}

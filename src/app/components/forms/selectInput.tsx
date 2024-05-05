@@ -46,7 +46,7 @@ export function SelectInput({ name, data, onChange, value }: any) {
         } else if (name === 'Driver') {
             setPlaceHolder(value ? value.apellido + ' ' + value.nombre : '')
         } else if (name === 'Vehicle') {
-            setPlaceHolder(data?.length ? data[0].marca + ' ' + data[0].modelo : '')
+            setPlaceHolder(data?.length ? data[0].marca + ' ' + data[0].modelo : value ? value.marca + ' ' + value.modelo : '')
         }
 
         else {
@@ -54,7 +54,6 @@ export function SelectInput({ name, data, onChange, value }: any) {
         }
 
     }, [name, driver, data, value])
-
 
 
     return (
@@ -90,7 +89,7 @@ export function SelectInput({ name, data, onChange, value }: any) {
                                     {
                                         data?.map((vehiculo: Vehiculo) => {
                                             return (
-                                                <SelectItem key={vehiculo.id} value={`${vehiculo.id}`}>{`${vehiculo.marca} ${vehiculo.modelo}`}</SelectItem>
+                                                <SelectItem key={vehiculo.id} value={`${vehiculo.id ? vehiculo.id : data?.length ? data[0].marca + ' ' + data[0].modelo : ''}`}>{`${vehiculo.marca} ${vehiculo.modelo}`}</SelectItem>
                                             )
                                         })
                                     }

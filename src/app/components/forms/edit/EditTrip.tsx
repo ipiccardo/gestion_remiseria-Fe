@@ -14,7 +14,7 @@ const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
     const sendBack = pathName.split('/')[1] + '/' + pathName.split('/')[2]
     const formatDate = trip.fecha.split('T')
     const correctDate = formatDate[0]
-    const [formData, setFormData] = useState<Trips>({ ...trip, fecha: correctDate });
+    const [formData, setFormData] = useState<Trips>({ ...trip, fecha: correctDate, });
     const [validFields, setValidFields] = useState<Record<keyof any, boolean>>({
         id: true,
         nombre: true,
@@ -62,6 +62,9 @@ const EditTripForm = ({ trip, driversList, vehiclesList }: any) => {
             return vehiculo.id_empleado === parseInt(formData.apellido)
         }))
     }, [formData.apellido])
+
+
+
 
     return (
         <>
