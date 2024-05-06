@@ -31,6 +31,8 @@ export async function createEmployeeAction(formData: FormData) {
   revalidatePath("/dashboard/drivers");
   revalidatePath("/dashboard/trips");
   revalidatePath("/dashboard/vehicles");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/dashboard/trips/edittrip");
   redirect("/dashboard/drivers");
 }
 
@@ -63,6 +65,8 @@ export async function editEmployeeAction(formData: FormData, id: any) {
   revalidatePath("/dashboard/drivers");
   revalidatePath("/dashboard/trips");
   revalidatePath("/dashboard/vehicles");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/dashboard/trips/edittrip");
   redirect("/dashboard/drivers");
 }
 export async function deleteEmployeeAction(id: any) {
@@ -82,6 +86,8 @@ export async function deleteEmployeeAction(id: any) {
   revalidatePath("/dashboard/vehicles");
   revalidatePath("/dashboard/trips");
   revalidatePath("/dashboard/drivers");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/dashboard/trips/edittrip");
   redirect("/dashboard/drivers");
 }
 
@@ -111,6 +117,8 @@ export async function createVehicleAccion(formData: FormData) {
   revalidatePath("/dashboard/vehicles");
   revalidatePath("/dashboard/trips");
   revalidatePath("/dashboard/drivers");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/dashboard/trips/edittrip");
   redirect("/dashboard/vehicles");
 }
 
@@ -145,6 +153,8 @@ export async function editVehicleAction(formData: FormData, id: any) {
   revalidatePath("/dashboard/vehicles");
   revalidatePath("/dashboard/trips");
   revalidatePath("/dashboard/drivers");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/dashboard/trips/edittrip");
   redirect("/dashboard/vehicles");
 }
 export async function deleteVehicleAction(id: any) {
@@ -191,6 +201,7 @@ export async function createTripAction(formData: FormData) {
   revalidatePath("/dashboard/trips");
   revalidatePath("/dashboard/drivers");
   revalidatePath("/dashboard/vehicles");
+  revalidatePath("/dashboard/trips/edittrip");
   redirect("/dashboard/trips");
 }
 
