@@ -5,6 +5,18 @@ import { redirect } from "next/navigation";
 
 // EMPLOYEE ACCIONS
 
+const revalidateFunction = (): any => {
+  revalidatePath("/dashboard/drivers");
+  revalidatePath("/dashboard/trips");
+  revalidatePath("/dashboard/vehicles");
+  revalidatePath("/dashboard/drivers/createemployee");
+  revalidatePath(`/dashboard/drivers/editemployee`);
+  revalidatePath("/dashboard/vehicles/createvehicle");
+  revalidatePath("/dashboard/vehicles/editevehicle");
+  revalidatePath("/dashboard/trips/createtrip");
+  revalidatePath("/dashboard/trips/edittrip");
+};
+
 export async function createEmployeeAction(formData: FormData) {
   const driver = {
     nombre: formData.get("Nombre"),
@@ -27,12 +39,8 @@ export async function createEmployeeAction(formData: FormData) {
     body: JSON.stringify(driver),
   });
 
-  revalidatePath("/dashboard/drivers/createemployee");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/dashboard/trips/edittrip");
+  revalidateFunction();
+
   redirect("/dashboard/drivers");
 }
 
@@ -61,12 +69,8 @@ export async function editEmployeeAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath(`/dashboard/drivers/editemployee`);
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/dashboard/trips/edittrip");
+  revalidateFunction();
+
   redirect("/dashboard/drivers");
 }
 export async function deleteEmployeeAction(id: any) {
@@ -82,12 +86,8 @@ export async function deleteEmployeeAction(id: any) {
     }
   );
 
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/dashboard/trips/edittrip");
+  revalidateFunction();
+
   redirect("/dashboard/drivers");
 }
 
@@ -113,12 +113,8 @@ export async function createVehicleAccion(formData: FormData) {
     body: JSON.stringify(vehicle),
   });
 
-  revalidatePath("/dashboard/vehicles/createvehicle");
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/dashboard/trips/edittrip");
+  revalidateFunction();
+
   redirect("/dashboard/vehicles");
 }
 
@@ -149,12 +145,8 @@ export async function editVehicleAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath("/dashboard/vehicles/editevehicle");
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/dashboard/trips/edittrip");
+  revalidateFunction();
+
   redirect("/dashboard/vehicles");
 }
 export async function deleteVehicleAction(id: any) {
@@ -170,9 +162,8 @@ export async function deleteVehicleAction(id: any) {
     }
   );
 
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
+  revalidateFunction();
+
   redirect("/dashboard/vehicles");
 }
 
@@ -197,11 +188,8 @@ export async function createTripAction(formData: FormData) {
     body: JSON.stringify(trip),
   });
 
-  revalidatePath("/dashboard/trips/createtrip");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/vehicles");
-  revalidatePath("/dashboard/trips/edittrip");
+  revalidateFunction();
+
   redirect("/dashboard/trips");
 }
 
@@ -227,10 +215,8 @@ export async function editTripAction(formData: FormData, id: any) {
     }
   );
 
-  revalidatePath("/dashboard/trips/edittrip");
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/vehicles");
+  revalidateFunction();
+
   redirect("/dashboard/trips");
 }
 
@@ -247,8 +233,7 @@ export async function deleteTripAction(id: any) {
     }
   );
 
-  revalidatePath("/dashboard/trips");
-  revalidatePath("/dashboard/drivers");
-  revalidatePath("/dashboard/vehicles");
+  revalidateFunction();
+
   redirect("/dashboard/trips");
 }
