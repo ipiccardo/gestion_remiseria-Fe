@@ -37,7 +37,7 @@ export function Alert({ id, type }: any) {
                     <rect x="13" y="9" width="3" height="9" />
                 </svg>
             </AlertDialogTrigger>
-            <AlertDialogContent className='w-48 md:w-full'>
+            <AlertDialogContent className='w-auto md:w-full'>
                 <AlertDialogHeader>
                     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                     <AlertDialogDescription>
@@ -45,7 +45,7 @@ export function Alert({ id, type }: any) {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel className="outline-none text-base flex items-center justify-center w-32 p-2 rounded border-blue-700 border-solid border-2 text-blue-700 bg-white hover:border-blue-900 hover:text-blue-900">Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className="outline-none text-base flex h-11 items-center justify-center w-32 p-2 rounded border-blue-700 border-solid border-2 text-blue-700 bg-white hover:border-blue-900 hover:text-blue-900">Cancel</AlertDialogCancel>
                     <button className="flex items-center justify-center w-32 p-2 rounded text-white bg-blue-700 border-blue-700 border-solid border-2  hover:border-blue-900 hover:bg-blue-900" onClick={handleClick}>Continue</button>
                 </AlertDialogFooter>
             </AlertDialogContent>
