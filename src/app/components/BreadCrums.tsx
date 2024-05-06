@@ -15,7 +15,7 @@ import {
 export function BreadcrumbWithCustomSeparator() {
     const pathName = usePathname()
 
-    const sendBack = pathName.split('/')[1]
+    const sendBack = pathName?.split('/')[1]
 
 
 
@@ -27,16 +27,16 @@ export function BreadcrumbWithCustomSeparator() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <Link href={`/${sendBack}`} className='text-white md:text-blue-900'>{pathName.includes('vehicles') ? 'Vehicles' : pathName.includes('trips') ? 'Trips' : 'Drivers'}</Link>
+                    <Link href={`/${sendBack}`} className='text-white md:text-blue-900'>{pathName?.includes('vehicles') ? 'Vehicles' : pathName?.includes('trips') ? 'Trips' : 'Drivers'}</Link>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbPage className='text-white md:text-blue-900'>{pathName.includes('createvehicle')
-                        ? 'Create Vehicles' : pathName.includes('createtrip')
-                            ? 'Create Trips' : pathName.includes('editemployee')
-                                ? 'Edit Driver' : pathName.includes('editvehicle')
-                                    ? 'Edit Vehicle' : pathName.includes('edittrip')
-                                        ? 'Edit Trip' : pathName.includes('createemployee') &&
+                    <BreadcrumbPage className='text-white md:text-blue-900'>{pathName?.includes('createvehicle')
+                        ? 'Create Vehicles' : pathName?.includes('createtrip')
+                            ? 'Create Trips' : pathName?.includes('editemployee')
+                                ? 'Edit Driver' : pathName?.includes('editvehicle')
+                                    ? 'Edit Vehicle' : pathName?.includes('edittrip')
+                                        ? 'Edit Trip' : pathName?.includes('createemployee') &&
                                         'Create Drivers'}</BreadcrumbPage>
                 </BreadcrumbItem>
             </BreadcrumbList>
