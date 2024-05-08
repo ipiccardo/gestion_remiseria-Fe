@@ -29,7 +29,7 @@ export const driverApi = {
     const results = await driverApi
       .list()
       .then((res) =>
-        res.filter(
+        res?.filter(
           (res) =>
             res.nombre.toLowerCase().includes(query?.toLowerCase()) ||
             res.apellido.toLowerCase().includes(query?.toLowerCase()) ||
